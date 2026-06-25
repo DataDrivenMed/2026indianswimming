@@ -1,0 +1,1352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFI Analytics by Ram Paragi &middot; Indian Senior National Swimming 2022&ndash;2026</title>
+<style>
+:root{--orange:#fc5200;--orange-10:#fc520018;--ink:#0d0d0d;--charcoal:#2e2e2c;--pewter:#5c5b57;--bone:#dddcd8;--linen:#f5f4f0;--white:#ffffff;--blue:#0055cc;--green:#1a7a4a;--gold:#b8860b;--radius:4px;--max:1220px;--font:-apple-system,"Helvetica Neue",Arial,sans-serif;--mono:"SF Mono","Fira Mono","Consolas",monospace;--transition:180ms ease}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--white);color:var(--ink);font-family:var(--font);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font:inherit;background:none;border:none}
+select{font:inherit}
+table{border-collapse:collapse;width:100%}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--bone);padding:0 24px;box-shadow:0 1px 12px rgba(0,0,0,.04)}
+.header-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--orange)}
+.brand-logo{width:28px;height:28px;background:var(--orange);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:11px;font-weight:800}
+.nav{display:flex;align-items:center;gap:2px;background:var(--linen);border:1px solid var(--bone);border-radius:999px;padding:4px}
+.nav a{position:relative;padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--charcoal);transition:color var(--transition),background var(--transition),box-shadow var(--transition)}
+.nav a:hover{color:var(--ink);background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.nav a.active{color:var(--white);background:var(--orange)}
+.nav a.active:hover{color:var(--white);background:var(--orange);box-shadow:0 2px 8px rgba(252,82,0,.35)}
+.hero{background:var(--ink);color:var(--white);padding:80px 24px 64px}
+.hero-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:end}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.hero h1{font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1.04;letter-spacing:-.02em;margin-bottom:20px}
+.hero h1 em{color:var(--orange);font-style:normal}
+.hero-lead{font-size:17px;color:rgba(255,255,255,.72);line-height:1.6;max-width:560px;margin-bottom:36px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;border-radius:var(--radius);font-size:13px;font-weight:700;transition:opacity var(--transition)}
+.btn:hover{opacity:.85}
+.btn-primary{background:var(--orange);color:var(--white)}
+.btn-ghost{border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8)}
+.hero-map{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:18px}
+.hm-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.hm-title{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.hm-toggle{display:flex;gap:2px;background:rgba(255,255,255,.08);border-radius:999px;padding:3px}
+.hm-tog-btn{padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.55);transition:color var(--transition),background var(--transition)}
+.hm-tog-btn.active{background:var(--orange);color:var(--white)}
+.hm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.hm-tile{position:relative;border-radius:6px;padding:11px 12px;overflow:hidden;cursor:default;transition:transform var(--transition);border:1px solid rgba(255,255,255,.08)}
+.hm-tile:hover{transform:translateY(-2px)}
+.hm-tile-name{font-size:12px;font-weight:700;color:var(--white);line-height:1.1;position:relative;z-index:2}
+.hm-tile-val{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--white);line-height:1;margin-top:5px;position:relative;z-index:2;font-variant-numeric:tabular-nums}
+.hm-tile-rank{position:absolute;top:8px;right:9px;font-size:9px;font-weight:700;color:rgba(255,255,255,.45);z-index:2}
+.hm-units{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1)}
+.hm-units-label{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.hm-units-chips{display:flex;gap:8px;flex-wrap:wrap}
+.hm-chip{flex:1;min-width:0;border-radius:6px;padding:9px 11px;border:1px solid rgba(255,255,255,.1)}
+.hm-chip-name{font-size:11px;font-weight:700;color:var(--white)}
+.hm-chip-sub{font-size:9px;color:rgba(255,255,255,.45);margin-top:1px}
+.hm-chip-val{font-size:17px;font-weight:800;color:var(--white);margin-top:3px;font-variant-numeric:tabular-nums}
+.hm-legend{display:flex;align-items:center;gap:8px;margin-top:14px}
+.hm-legend-lbl{font-size:10px;color:rgba(255,255,255,.45)}
+.hm-legend-bar{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,rgba(252,82,0,.18),var(--orange))}
+.hm-legend-note{font-size:10px;color:rgba(255,255,255,.4);white-space:nowrap}
+.callout-band{background:var(--orange);padding:24px}
+.callout-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.callout-item strong{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:6px}
+.callout-item p{color:var(--white);font-size:14px;line-height:1.5;font-weight:500}
+.section{padding:72px 24px}
+.section.linen{background:var(--linen)}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-header{margin-bottom:40px}
+.section-header .eyebrow{color:var(--orange);margin-bottom:10px}
+.section-header h2{font-size:clamp(24px,3.5vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.1;max-width:680px}
+.section-header p{margin-top:12px;color:var(--pewter);font-size:15px;max-width:560px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+/* INSIGHT */
+.insight{margin-top:32px;border-left:3px solid var(--orange);background:var(--linen);border-radius:0 var(--radius) var(--radius) 0;padding:22px 26px}
+.section.linen .insight{background:var(--white)}
+.insight-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.insight-label::before{content:"&#9670;";font-size:8px}
+.insight-headline{font-size:16px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:12px;max-width:780px}
+.insight-body{font-size:13px;color:var(--charcoal);line-height:1.7;max-width:860px}
+.insight-body p+p{margin-top:9px}
+.insight-body b{color:var(--ink)}
+.insight-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.insight-pill{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;background:var(--white);border:1px solid var(--bone);color:var(--charcoal)}
+.insight-pill.hot{background:var(--orange-10);border-color:var(--orange);color:var(--orange)}
+.insight-pill.good{background:#d4ede0;border-color:#9fd4b8;color:var(--green)}
+.insight-pill.warn{background:#fff3cd;border-color:#ffe08a;color:#7a5f00}
+/* PANELS */
+.panel{background:var(--white);border:1px solid var(--bone);border-radius:var(--radius);overflow:hidden}
+.panel-head{padding:16px 20px 12px;border-bottom:1px solid var(--bone);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.panel-head h3{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--charcoal)}
+.panel-badge{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.badge-orange{background:var(--orange-10);color:var(--orange)}
+.badge-green{background:#d4ede0;color:var(--green)}
+.badge-blue{background:#dce8f8;color:var(--blue)}
+.panel-body{padding:20px}
+.kpi-card{background:var(--white);border:1px solid var(--bone);border-radius:var(--radius);padding:20px}
+.kpi-card.accent{border-top:3px solid var(--orange)}
+.kpi-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--pewter);margin-bottom:10px}
+.kpi-value{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.kpi-sub{margin-top:8px;font-size:12px;color:var(--pewter)}
+.kpi-sub b{color:var(--ink)}
+.filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:24px}
+.filter-row label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pewter);display:flex;flex-direction:column;gap:4px}
+.filter-row select{min-width:160px;padding:8px 28px 8px 12px;border:1px solid var(--bone);border-radius:var(--radius);background:var(--white);color:var(--ink);font-size:13px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235c5b57'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;cursor:pointer}
+.filter-row select:focus{outline:2px solid var(--orange);outline-offset:2px}
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:grid;grid-template-columns:200px 1fr 72px;align-items:center;gap:12px;font-size:13px}
+.bar-label{color:var(--charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.bar-track{height:10px;background:var(--linen);border-radius:2px;overflow:hidden;border:1px solid var(--bone)}
+.bar-fill{height:100%;background:var(--orange);border-radius:1px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.bar-fill.blue{background:var(--blue)}
+.bar-fill.green{background:var(--green)}
+.bar-val{text-align:right;color:var(--charcoal);font-variant-numeric:tabular-nums;font-size:13px;font-weight:600}
+.table-wrap{overflow-x:auto}
+.data-table{font-size:13px;width:100%}
+.data-table th{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--pewter);text-align:left;border-bottom:1px solid var(--bone);background:var(--linen);white-space:nowrap}
+.data-table td{padding:11px 14px;border-bottom:1px solid var(--bone);color:var(--charcoal);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:0}
+.data-table tr:hover td{background:#fafafa}
+.data-table .mono{font-family:var(--mono);font-size:12px}
+.data-table .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);white-space:nowrap}
+.tier-pill{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;white-space:nowrap}
+.tier-intl{background:#fde8dc;color:#c43a00}
+.tier-high{background:#dce8f8;color:var(--blue)}
+.tier-pipe{background:#d4ede0;color:var(--green)}
+.tier-mon{background:var(--linen);color:var(--pewter)}
+.gap-excellent{color:var(--green);font-weight:700}
+.gap-good{color:var(--blue);font-weight:700}
+.gap-ok{color:var(--charcoal)}
+.gap-far{color:var(--pewter)}
+.rec-flag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;background:var(--orange-10);color:var(--orange)}
+.scatter-wrap{position:relative}
+svg.scatter{width:100%;overflow:visible}
+.bubble{cursor:pointer;transition:opacity var(--transition)}
+.bubble:hover{opacity:.75}
+.scatter-tooltip{position:absolute;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:var(--radius);font-size:12px;pointer-events:none;white-space:nowrap;z-index:10;opacity:0;transition:opacity var(--transition);box-shadow:0 4px 20px rgba(0,0,0,.35)}
+.scatter-tooltip.show{opacity:1}
+.axis-label{font-size:11px;fill:var(--pewter);font-family:var(--font)}
+.axis-line{stroke:var(--bone);stroke-width:1}
+.grid-line{stroke:var(--bone);stroke-width:1;stroke-dasharray:4,4}
+.conv-meter{display:flex;align-items:center;gap:8px;font-size:12px}
+.conv-track{flex:1;height:6px;background:var(--bone);border-radius:3px;overflow:hidden}
+.conv-fill{height:100%;border-radius:3px;background:var(--orange)}
+svg.waterfall{width:100%}
+.wf-label{font-size:11px;fill:var(--pewter);font-family:var(--font)}
+.wf-val{font-size:11px;fill:var(--charcoal);font-weight:700;font-family:var(--font)}
+.tab-bar{display:flex;border-bottom:1px solid var(--bone);margin-bottom:24px}
+.tab-btn{padding:10px 18px;font-size:13px;font-weight:600;color:var(--pewter);border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:color var(--transition),border-color var(--transition);background:none;border-top:none;border-left:none;border-right:none}
+.tab-btn.active{color:var(--orange);border-bottom-color:var(--orange)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bone);border:1px solid var(--bone);border-radius:var(--radius);overflow:hidden}
+.dl-card{background:var(--white);padding:20px}
+.dl-card h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.dl-card p{font-size:12px;color:var(--pewter);margin-bottom:14px;line-height:1.5}
+.dl-link{font-size:12px;font-weight:700;color:var(--blue)}
+.dl-link:hover{text-decoration:underline}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.45);padding:40px 24px;font-size:13px}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
+.footer-brand{color:var(--orange);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+/* BRAND BYLINE */
+.brand-block{display:flex;flex-direction:column;gap:0}
+.brand-sfi{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--orange);line-height:1}
+.brand-byline{font-size:15px;font-weight:600;color:var(--charcoal);letter-spacing:-.01em;margin-top:3px;padding-left:38px;line-height:1}
+/* HEADER DIVIDER between nav and socials */
+.header-divider{width:1px;height:20px;background:var(--bone);flex-shrink:0}
+/* SOCIAL ICONS */
+.social-icons{display:flex;align-items:center;gap:6px}
+.social-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:8px;
+  color:var(--pewter);background:transparent;border:1px solid var(--bone);
+  transition:transform 200ms cubic-bezier(.34,1.56,.64,1),
+             background 200ms ease,
+             border-color 200ms ease,
+             color 200ms ease,
+             box-shadow 200ms ease;
+  flex-shrink:0;
+}
+.social-icon svg{width:16px;height:16px;display:block;fill:currentColor}
+.social-icon:hover{transform:scale(1.18) translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.social-icon.linkedin:hover{background:#0a66c2;border-color:#0a66c2;color:var(--white)}
+.social-icon.x-twitter:hover{background:#000000;border-color:#000000;color:var(--white)}
+.social-icon.substack:hover{background:#ff6719;border-color:#ff6719;color:var(--white)}
+/* tooltip on social icons */
+.social-icon{position:relative}
+.social-icon::after{
+  content:attr(data-tip);
+  position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--ink);color:var(--white);
+  font-size:11px;font-weight:600;white-space:nowrap;
+  padding:4px 8px;border-radius:4px;
+  opacity:0;pointer-events:none;
+  transition:opacity 150ms ease;
+}
+.social-icon:hover::after{opacity:1}
+/* PREDICTIONS */
+.pred-disclaimer{background:#fff8f0;border:1px solid #ffd4b8;border-radius:var(--radius);padding:14px 18px;font-size:12px;color:#7a4a1e;line-height:1.6;margin-bottom:28px}
+.pred-disclaimer b{color:#5a2e00}
+.pred-tabs{display:flex;gap:0;border-bottom:1px solid var(--bone);margin-bottom:24px}
+.pred-tab{padding:10px 18px;font-size:13px;font-weight:600;color:var(--pewter);border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:color var(--transition),border-color var(--transition);background:none;border-top:none;border-left:none;border-right:none}
+.pred-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+.pred-pane{display:none}
+.pred-pane.active{display:block}
+/* athlete cards */
+.athlete-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.athlete-card{background:var(--white);border:1px solid var(--bone);border-radius:var(--radius);overflow:hidden;transition:box-shadow var(--transition)}
+.athlete-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.athlete-card.nehra-card{border-top:3px solid var(--orange);background:#fffaf8}
+.athlete-card.risk-card{border-top:3px solid #c0392b}
+.ac-head{padding:14px 16px 10px;border-bottom:1px solid var(--bone)}
+.ac-name{font-size:14px;font-weight:700;color:var(--ink)}
+.ac-meta{font-size:11px;color:var(--pewter);margin-top:2px}
+.ac-body{padding:14px 16px}
+.ac-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--linen);font-size:12px}
+.ac-row:last-child{border-bottom:0}
+.ac-label{color:var(--pewter)}
+.ac-value{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+/* traffic lights */
+.tl{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.tl-green{background:#d4ede0;color:var(--green)}
+.tl-yellow{background:#fff3cd;color:#7a5f00}
+.tl-red{background:#fde8dc;color:#c43a00}
+.tl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tl-green .tl-dot{background:var(--green)}
+.tl-yellow .tl-dot{background:#e6a817}
+.tl-red .tl-dot{background:#c43a00}
+/* pathway bars */
+.pathway-bar{margin-top:10px}
+.pw-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--pewter);margin-bottom:4px}
+.pw-track{height:8px;background:var(--linen);border-radius:2px;overflow:hidden;border:1px solid var(--bone);position:relative}
+.pw-fill{height:100%;border-radius:1px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.pw-fill.green{background:var(--green)}
+.pw-fill.yellow{background:#e6a817}
+.pw-fill.red{background:#c43a00}
+/* event projection table */
+.proj-table{width:100%}
+.proj-table th{padding:9px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pewter);background:var(--linen);border-bottom:1px solid var(--bone);text-align:left;white-space:nowrap}
+.proj-table td{padding:10px 12px;border-bottom:1px solid var(--bone);font-size:12px;color:var(--charcoal);vertical-align:middle}
+.proj-table tr:last-child td{border-bottom:0}
+.proj-table tr:hover td{background:#fafafa}
+.proj-table .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+/* nehra risk panel */
+.nehra-risk{background:#fff8f0;border:1px solid var(--orange);border-radius:var(--radius);padding:20px 22px;margin-top:24px}
+.nehra-risk h4{font-size:13px;font-weight:700;color:var(--orange);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.nehra-risk p{font-size:13px;color:var(--charcoal);line-height:1.6}
+.nehra-risk p+p{margin-top:8px}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.scenario-box{background:var(--white);border:1px solid var(--bone);border-radius:var(--radius);padding:14px 16px}
+.scenario-box h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.scenario-box h5.with{color:var(--green)}
+.scenario-box h5.without{color:#c43a00}
+.scenario-row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--linen)}
+.scenario-row:last-child{border-bottom:0}
+@media(max-width:900px){.athlete-grid{grid-template-columns:1fr 1fr}.scenario-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.athlete-grid{grid-template-columns:1fr}}
+
+/* TRAJECTORY CHARTS */
+.traj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.traj-card{background:var(--white);border:1px solid var(--bone);border-radius:var(--radius);padding:16px 18px}
+.traj-card.green-edge{border-top:3px solid var(--green)}
+.traj-card.yellow-edge{border-top:3px solid #e6a817}
+.traj-card.red-edge{border-top:3px solid var(--pewter)}
+.traj-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.traj-title{font-size:13px;font-weight:700;color:var(--ink)}
+.traj-sub{font-size:11px;color:var(--pewter);margin-top:1px}
+svg.traj-svg{width:100%;height:auto;overflow:visible;display:block;margin-top:4px}
+.tl-dot-pt{fill:var(--ink)}
+.tl-proj-pt{fill:var(--orange)}
+.traj-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:11px}
+/* BODY LENGTH TRANSLATION */
+.bl-strip{display:flex;align-items:center;gap:2px;margin-top:4px}
+.bl-unit{width:14px;height:8px;border-radius:1px;background:var(--orange);opacity:.85}
+.bl-unit.faint{background:var(--bone);opacity:1}
+.gap-translate{background:var(--linen);border-radius:var(--radius);padding:10px 12px;margin-top:8px;font-size:12px;line-height:1.5}
+.gap-translate b{color:var(--ink)}
+.gap-big{font-size:18px;font-weight:800;color:var(--orange);font-variant-numeric:tabular-nums}
+.gap-big.green{color:var(--green)}
+/* QUALIFICATION TIMELINE */
+.qual-timeline{position:relative;margin:8px 0 4px;padding:30px 0 50px}
+svg.qt-svg{width:100%;height:auto;overflow:visible;display:block}
+.qt-milestone{cursor:default}
+.qt-line{stroke:var(--bone);stroke-width:2}
+.qt-fill{stroke:var(--orange);stroke-width:2}
+.qt-node{fill:var(--white);stroke:var(--orange);stroke-width:2}
+.qt-node.gate{fill:var(--orange)}
+.qt-node.past{fill:var(--bone);stroke:var(--bone)}
+.qt-label{font-size:10px;fill:var(--charcoal);font-family:var(--font);font-weight:600}
+.qt-date{font-size:9px;fill:var(--pewter);font-family:var(--font)}
+.qt-today{stroke:var(--blue);stroke-width:2;stroke-dasharray:3,3}
+.qt-today-lbl{font-size:10px;fill:var(--blue);font-weight:700;font-family:var(--font)}
+/* RELAY CARDS */
+.relay-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--linen)}
+.relay-row:last-child{border-bottom:0}
+.relay-name{font-size:13px;font-weight:600;color:var(--ink)}
+.relay-prog{font-size:11px;color:var(--pewter);margin-top:2px}
+.relay-gapbar{display:flex;align-items:center;gap:8px}
+.relay-track{width:120px;height:8px;background:var(--linen);border:1px solid var(--bone);border-radius:2px;overflow:hidden;position:relative}
+.relay-mark{position:absolute;top:-2px;width:2px;height:12px;background:var(--ink)}
+.relay-fill{height:100%;background:var(--pewter)}
+@media(max-width:900px){.traj-grid{grid-template-columns:1fr}}
+
+@media(max-width:900px){.hero-inner,.callout-inner,.grid-2,.grid-4,.dl-grid{grid-template-columns:1fr}.bar-row{grid-template-columns:120px 1fr 56px}.footer-inner{flex-direction:column}.nav{display:none}.header-divider{display:none}.brand-byline{font-size:13px}}
+@media(max-width:560px){.bar-row{grid-template-columns:1fr;gap:4px}.bar-val{text-align:left}.hm-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand" style="text-decoration:none">
+      <div class="brand-block">
+        <div class="brand-sfi">
+          <div class="brand-logo">SFI</div>
+          SFI Analytics
+        </div>
+        <div class="brand-byline">by Ram Paragi</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="#priorities">Priorities</a>
+      <a href="#teams">Teams</a>
+      <a href="#benchmarks">Benchmarks</a>
+      <a href="#athletes">Athletes</a>
+      <a href="#records">Records</a>
+      <a href="#predictions">Predictions</a>
+      <a href="#downloads">Downloads</a>
+    </nav>
+    <div class="header-divider"></div>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/ramnarayan/" target="_blank" rel="noopener" class="social-icon linkedin" data-tip="LinkedIn" aria-label="Ram Paragi on LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/DatadrivenMed" target="_blank" rel="noopener" class="social-icon x-twitter" data-tip="X / Twitter" aria-label="Ram Paragi on X">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://swimed.substack.com/" target="_blank" rel="noopener" class="social-icon substack" data-tip="Substack" aria-label="Ram Paragi on Substack">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">2022&ndash;2026 results intelligence</p>
+      <h1>Indian Senior National<br><em>Swimming Analytics</em></h1>
+      <p class="hero-lead">Two events &mdash; Men 1500m and Men 800m Freestyle &mdash; already sit at or within 1% of World 2025 finalist benchmarks. Distance freestyle and selected medley events represent India&rsquo;s most credible international investment case.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="downloads/executive_deck.pptx">&#8595; Executive Deck</a>
+        <a class="btn btn-ghost" href="downloads/technical_analytics_workbook.xlsx">&#8595; Workbook</a>
+      </div>
+    </div>
+    <div class="hero-map">
+      <div class="hm-head">
+        <div class="hm-title">Domestic performance by team</div>
+        <div class="hm-toggle">
+          <button class="hm-tog-btn active" data-metric="points" onclick="setMapMetric('points')">Points</button>
+          <button class="hm-tog-btn" data-metric="medals" onclick="setMapMetric('medals')">Medals</button>
+        </div>
+      </div>
+      <div class="hm-grid" id="stateGrid"></div>
+      <div class="hm-units">
+        <div class="hm-units-label">National units (non-geographic)</div>
+        <div class="hm-units-chips" id="unitChips"></div>
+      </div>
+      <div class="hm-legend">
+        <span class="hm-legend-lbl">Low</span>
+        <div class="hm-legend-bar"></div>
+        <span class="hm-legend-lbl">High</span>
+        <span class="hm-legend-note" id="mapLegendNote">total points, 2022&ndash;2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="callout-band">
+  <div class="callout-inner">
+    <div class="callout-item"><strong>Bottom line</strong><p>Fund a narrow event portfolio first. Use heat-to-final conversion and record-pressure diagnostics to manage execution by team and event.</p></div>
+    <div class="callout-item"><strong>Best near-term signals</strong><p>Men 1500m Freestyle &middot; Men 800m Freestyle &middot; Women 400m Medley &middot; Women 200m Freestyle &middot; Women 200m Medley</p></div>
+  </div>
+</div>
+
+<!-- PRIORITIES -->
+<section class="section" id="priorities">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">Investment portfolio</p>
+      <h2>Prioritise events where domestic momentum and world proximity reinforce each other.</h2>
+      <p>Priority score combines domestic momentum, world-readiness gap, record pressure, youth pipeline share, and heat-to-final conversion into a single composite index.</p>
+    </div>
+    <div class="filter-row">
+      <label>Gender<select id="genderFilter"><option value="all">All genders</option><option value="Men">Men</option><option value="Women">Women</option><option value="Mixed">Mixed</option></select></label>
+      <label>Category<select id="categoryFilter"><option value="all">All categories</option><option value="Distance">Distance</option><option value="Middle Distance">Middle Distance</option><option value="Sprint 50">Sprint 50</option><option value="Sprint 100">Sprint 100</option><option value="Relay">Relay</option></select></label>
+      <label>Tier<select id="tierFilter"><option value="all">All tiers</option><option value="International-readiness priority">International readiness</option><option value="High development priority">High development</option><option value="Pipeline-build priority">Pipeline build</option><option value="Monitor">Monitor</option></select></label>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h3>Event priority scores</h3><span class="panel-badge badge-orange" id="priorityCount">&#8212;</span></div>
+        <div class="panel-body"><div class="bar-chart" id="priorityChart"></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Priority action table</h3></div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th>Event</th><th class="num">Score</th><th>Tier</th><th>Action</th></tr></thead><tbody id="priorityTable"></tbody></table></div>
+      </div>
+    </div>
+    <div style="margin-top:24px">
+      <div class="panel">
+        <div class="panel-head"><h3>World benchmark gap vs. domestic momentum</h3><span class="panel-badge badge-blue">Bubble = heat conversion %</span></div>
+        <div class="panel-body scatter-wrap" style="min-height:320px"><div class="scatter-tooltip" id="scatterTip"></div><svg class="scatter" id="scatterSvg" viewBox="0 0 800 340"></svg></div>
+      </div>
+    </div>
+    <div class="insight">
+      <div class="insight-label">Data insight &mdash; Investment priorities</div>
+      <div class="insight-headline">One event stands apart. Men 1500m Freestyle scores 95.8 &mdash; 37% above the next-ranked event &mdash; and is the only event already at or ahead of the World 2025 8th-place standard.</div>
+      <div class="insight-body">
+        <p>The portfolio separates cleanly into three bands. <b>Men 1500m Freestyle</b> is the sole international-readiness event: Aryan Nehra&rsquo;s 2026 time of 15:14.88 sits 0.45% <em>ahead</em> of the World 2025 finalist benchmark, the winner improved by 53.96 seconds across the four-year window, and the heat-to-final conversion rate in this event reaches 100%. No other event combines all three signals at this magnitude.</p>
+        <p>A second band &mdash; <b>Men 800m Freestyle (69.6)</b> and <b>Women 400m Medley (66.9)</b> &mdash; shows world gaps of 0.17% and 5.91% respectively, both supported by strong record pressure and above-average youth pipeline share. These warrant immediate international exposure funding.</p>
+        <p>The remaining pipeline-build events (scores 50&ndash;63) share a consistent weakness: high momentum domestically but conversion rates below 55%, meaning depth is not yet translating into medal-round efficiency. SFI should treat this as a heat-strategy and selection problem, not a talent problem.</p>
+        <p><b>Decision required:</b> which 6&ndash;8 events receive a dedicated camp, qualifying target, and event owner in the next cycle? The data places Men 1500m, Men 800m, Women 400m Medley, Women 200m Freestyle, and Women 200m Medley at the front of that list.</p>
+      </div>
+      <div class="insight-pills">
+        <span class="insight-pill hot">Men 1500m &mdash; score 95.8</span>
+        <span class="insight-pill hot">At/ahead of World 8th</span>
+        <span class="insight-pill good">Men 800m &mdash; within 1%</span>
+        <span class="insight-pill good">Women 400m IM &mdash; record pressure</span>
+        <span class="insight-pill warn">Pipeline events: conversion &lt;55%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAMS -->
+<section class="section linen" id="teams">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">Team system signals</p>
+      <h2>Karnataka is the domestic benchmark. The next tier must win on conversion, not just volume.</h2>
+      <p>Heat-to-final conversion separates participation volume from competition execution efficiency.</p>
+    </div>
+    <div class="grid-4" style="margin-bottom:24px">
+      <div class="kpi-card accent"><div class="kpi-label">Karnataka points</div><div class="kpi-value">1,750</div><div class="kpi-sub"><b>175 medals</b> &middot; 304 top-8 finishes</div></div>
+      <div class="kpi-card"><div class="kpi-label">Maharashtra points</div><div class="kpi-value">963</div><div class="kpi-sub"><b>81 medals</b> &middot; 214 top-8 finishes</div></div>
+      <div class="kpi-card"><div class="kpi-label">Best conversion rate</div><div class="kpi-value">75.8%</div><div class="kpi-sub">Karnataka &mdash; <b>238/314</b> heat entries</div></div>
+      <div class="kpi-card"><div class="kpi-label">Conversion gap to leader</div><div class="kpi-value">&minus;26pp</div><div class="kpi-sub">Gujarat: <b>32.9%</b> vs Karnataka 75.8%</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="panel"><div class="panel-head"><h3>Top teams by points (2022&ndash;2026)</h3></div><div class="panel-body"><div class="bar-chart" id="teamChart"></div></div></div>
+      <div class="panel"><div class="panel-head"><h3>Heat-to-final conversion rate</h3><span class="panel-badge badge-blue">% of heat entries reaching finals</span></div><div class="panel-body"><div class="bar-chart" id="conversionChart"></div></div></div>
+    </div>
+    <div style="margin-top:24px">
+      <div class="panel"><div class="panel-head"><h3>Full team comparison</h3></div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th>Team</th><th class="num">Points</th><th class="num">Medals</th><th class="num">Top-8</th><th class="num">Medal %</th><th class="num">Heat conv.</th><th class="num">Finalists</th><th>Profile</th></tr></thead><tbody id="teamTable"></tbody></table></div>
+      </div>
+    </div>
+    <div class="insight">
+      <div class="insight-label">Data insight &mdash; Team system</div>
+      <div class="insight-headline">Karnataka outperforms the field on every dimension simultaneously &mdash; points, medals, top-8 depth, and conversion rate. No other team has cracked the system-level formula.</div>
+      <div class="insight-body">
+        <p>Karnataka&rsquo;s 1,750 points is <b>1.82&times; Maharashtra&rsquo;s 963</b> &mdash; not a marginal lead but a structural one. More important than the point gap is the conversion rate gap: Karnataka converts <b>75.8%</b> of heat entries into finalists; Gujarat converts 32.9%. Gujarat produces national record holders (Aryan Nehra) but cannot convert broad participation into finals. The implication for SFI: national talent alone does not explain Karnataka&rsquo;s dominance &mdash; coaching system, selection discipline, and competitive density inside the state program are the differentiating variables.</p>
+        <p><b>West Bengal is the most inefficient top-8 team:</b> 75 top-8 finishes but only 15 medals (20.0% medal conversion), the lowest rate of any team with significant volume. This signals finalist athletes who consistently finish 5th&ndash;8th rather than 1st&ndash;3rd &mdash; a podium-pressure problem, not a depth problem. A targeted race-execution intervention for West Bengal&rsquo;s finalists would cost little and could yield 8&ndash;10 additional medals.</p>
+        <p><b>RSPB at 65.5% conversion</b> outperforms Maharashtra (57.6%) and Tamil Nadu (49.2%) despite fewer resources, flagging a selection and preparation model worth studying. SSCB is entirely male (102 men&rsquo;s top-8 finishes, 0 women&rsquo;s) &mdash; this is a structural gender gap in the program that SFI should formally document and address.</p>
+        <p><b>Teams below 35% conversion</b> (Gujarat, Odisha, Delhi, Telangana) are producing individual stars, not systems. SFI support to these states should be conditional on conversion improvement, not just medal targets.</p>
+      </div>
+      <div class="insight-pills">
+        <span class="insight-pill hot">Karnataka: 75.8% conversion</span>
+        <span class="insight-pill hot">1.82&times; points lead over #2</span>
+        <span class="insight-pill warn">West Bengal: 20% medal rate</span>
+        <span class="insight-pill warn">SSCB: zero women&rsquo;s top-8</span>
+        <span class="insight-pill good">RSPB 65.5% &mdash; study the model</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENCHMARKS -->
+<section class="section" id="benchmarks">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">International benchmark position</p>
+      <h2>Two events are at or within 1% of World 2025 finalist level. Seven more sit within striking distance.</h2>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('bench','8th')">vs. 8th Place</button>
+      <button class="tab-btn" onclick="switchTab('bench','gold')">vs. Gold</button>
+    </div>
+    <div id="bench-8th" class="tab-pane active">
+      <div class="grid-2">
+        <div class="panel"><div class="panel-head"><h3>Closest gaps to World 2025 8th place</h3></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Event</th><th class="num">India time</th><th class="num">World 8th</th><th class="num">Gap %</th><th>Tier</th></tr></thead><tbody id="bench8Table"></tbody></table></div></div>
+        <div class="panel"><div class="panel-head"><h3>Winner improvement 2022&rarr;2026</h3><span class="panel-badge badge-green">Seconds gained</span></div><div class="panel-body"><div class="bar-chart" id="momentumChart"></div></div></div>
+      </div>
+    </div>
+    <div id="bench-gold" class="tab-pane">
+      <div class="panel"><div class="panel-head"><h3>Gap to World 2025 Gold</h3></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Event</th><th class="num">India time</th><th class="num">World Gold</th><th class="num">Gap %</th><th>Gold performer</th></tr></thead><tbody id="benchGoldTable"></tbody></table></div></div>
+    </div>
+    <div class="insight">
+      <div class="insight-label">Data insight &mdash; International benchmarks &amp; event momentum</div>
+      <div class="insight-headline">India&rsquo;s fastest-improving events are also its closest to the world &mdash; a rare alignment that normally takes a decade to manufacture. SFI has a narrow window to capitalise.</div>
+      <div class="insight-body">
+        <p>The Men 1500m Freestyle shows the most striking convergence of signals in the dataset: the winner improved by <b>53.96 seconds</b> between 2022 and 2026 &mdash; more than any other event &mdash; while simultaneously moving from 3.3% outside the World 2025 finalist benchmark to <b>0.45% ahead</b> of it. This is not a linear trend; it is an inflection point. The rate of improvement is accelerating, not plateauing.</p>
+        <p>Men 800m Freestyle mirrors this pattern: <b>23.81 seconds</b> of improvement across four years with a current gap of just 0.17% to World 2025 8th place. Together, these two events represent the clearest international readiness case in India&rsquo;s current swimming portfolio. Both are held by the same athlete (Aryan Nehra), which introduces a programme risk that SFI must plan for explicitly.</p>
+        <p>Women&rsquo;s events show a different pattern: strong domestic momentum (Women 1500m improved 20.00 seconds; Women 4&times;200m Freestyle improved 17.22 seconds) but larger world gaps. <b>Women 200m Freestyle at 2.42% is the most actionable women&rsquo;s individual event</b> &mdash; small gap, improving trend, 75% under-20 share in the finalist pool.</p>
+        <p>Sprint events show minimal multi-year improvement but surprise proximity to world standards. <b>Men 50m Backstroke at 2.84%</b> and <b>Men 50m Butterfly at 3.10%</b> from World 8th deserve monitoring, particularly given the low training investment relative to distance events. These events also carry strong relay translation value.</p>
+        <p><b>What coaches need to inspect:</b> the gap to gold in 1500m (4.63%) is achievable in a 4-year Olympic cycle for an athlete already ahead of the finalist benchmark. Qualifying standard, competition calendar, and altitude camp access are now the binding constraints &mdash; not talent.</p>
+      </div>
+      <div class="insight-pills">
+        <span class="insight-pill hot">Men 1500m: +53.96s improvement</span>
+        <span class="insight-pill hot">0.45% ahead of World 8th</span>
+        <span class="insight-pill good">Men 800m: 0.17% gap</span>
+        <span class="insight-pill good">Women 200m Free: 2.42% gap</span>
+        <span class="insight-pill warn">Women distance: large world gaps persist</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATHLETES -->
+<section class="section linen" id="athletes">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">Athlete &amp; pipeline development</p>
+      <h2>Repeat-year improvers and high-point event families identify the strongest development channels.</h2>
+    </div>
+    <div class="grid-2">
+      <div class="panel"><div class="panel-head"><h3>Top athlete progression scores</h3></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Athlete</th><th>Team</th><th class="num">Score</th><th class="num">Imp. yrs</th><th>Profile</th></tr></thead><tbody id="athleteTable"></tbody></table></div></div>
+      <div class="panel"><div class="panel-head"><h3>Strongest event pipelines (by points)</h3></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Pipeline</th><th class="num">Teams</th><th class="num">Points</th><th class="num">Medals</th><th class="num">Avg rank</th></tr></thead><tbody id="pipelineTable"></tbody></table></div></div>
+    </div>
+    <div class="insight">
+      <div class="insight-label">Data insight &mdash; Athlete development &amp; pipeline</div>
+      <div class="insight-headline">The strongest development signals are outside Karnataka. Odisha&rsquo;s Mannata Mishra (6 improving years) and Shristi Upadhaya (5 improving years) show the most durable progression patterns in the full dataset.</div>
+      <div class="insight-body">
+        <p>Athlete progression score rewards consistency of improvement across repeated event-years, not single-year peaks. By this measure, <b>Manavi Varma (Karnataka, 22.7)</b>, <b>Shristi Upadhaya (Odisha, 22.0)</b>, and <b>Mannata Mishra (Odisha, 19.7)</b> represent the most reliable development trajectories in the programme. These athletes improve not because of single breakthrough performances but because they return, repeat, and get faster &mdash; the developmental signature SFI should prioritise over medal counts when selecting athletes for long-term investment.</p>
+        <p><b>Aryan Nehra (Gujarat)</b> is the dataset&rsquo;s most internationally significant performer (national records, World 8th proximity) but carries a progression score of 0.0 because his times did not consistently improve in repeated event-years within the file window. His times are fast, not faster. This is a maturation signal &mdash; he may have reached near-ceiling domestically and requires international competition load, not national-circuit repetition, to improve further.</p>
+        <p>Pipeline depth data reveals a key asymmetry: <b>Women Medley Middle Distance has the broadest competitive base</b> (14 teams, 371 points, 30 medals) yet remains outside the top-2 internationally. Men Freestyle Distance (11 teams, 370 points) is the next deepest, confirming the distance investment case. <b>Relay pipelines show the weakest average rank</b> (4.39 for Men Freestyle Relay), indicating that relay team assembly and baton/turn execution are underdeveloped skills relative to individual event depth.</p>
+        <p><b>Youth pipeline question for SFI:</b> Dhinidhi Desinghu (Karnataka, 12 at first senior final) and Thanya Shadakshari (16 at first senior final, 2025) show Karnataka&rsquo;s ability to develop and expose very young athletes to senior competition. No other state replicates this pattern consistently. SFI should examine Karnataka&rsquo;s selection and preparation model for under-18 athletes as a replicable template.</p>
+      </div>
+      <div class="insight-pills">
+        <span class="insight-pill hot">Odisha: 5&ndash;6 yr progression streaks</span>
+        <span class="insight-pill hot">Manavi Varma: score 22.7</span>
+        <span class="insight-pill warn">Nehra: 0.0 progression (plateau signal)</span>
+        <span class="insight-pill good">Women Medley: 14-team pipeline</span>
+        <span class="insight-pill good">Karnataka: U-16 to senior pathway</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECORDS -->
+<section class="section" id="records">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">Record pressure diagnostics</p>
+      <h2>15 national record flags were printed in 2026 alone &mdash; the highest concentration of any year in scope.</h2>
+      <p>Negative record-pressure seconds mean the winner surpassed the printed record. These rows are the highest-value verification priorities before external publication.</p>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h3>Top record-pressure events (by margin)</h3><span class="panel-badge badge-orange">NMR = new record flagged</span></div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th>Year</th><th>Event</th><th>Winner</th><th class="num">Time</th><th class="num">Gap (s)</th><th>Status</th></tr></thead><tbody id="recordTable"></tbody></table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Record pressure waterfall (seconds vs. printed record)</h3><span class="panel-badge badge-green">Negative = record broken</span></div>
+        <div class="panel-body" style="min-height:280px"><svg class="waterfall" id="waterfallSvg" viewBox="0 0 680 280"></svg></div>
+      </div>
+    </div>
+    <div class="insight">
+      <div class="insight-label">Data insight &mdash; Record pressure &amp; technical intervention</div>
+      <div class="insight-headline">Aryan Nehra accounts for four of the top ten record-pressure events across three different years. He is a single-athlete programme risk: no documented successor approaches his margins in distance freestyle.</div>
+      <div class="insight-body">
+        <p>The 2026 meet produced the highest concentration of national record breaks in the dataset&rsquo;s four-year window: <b>15 NMR flags in a single year</b>, compared to 4&ndash;6 in prior years. This is a programme-wide acceleration signal, not a single-athlete phenomenon. Karnataka drove relay record breaks (Women 4&times;200m Freestyle: &minus;9.84s; Women 4&times;100m Freestyle: &minus;8.38s; Women 4&times;100m Medley: &minus;4.93s) while individual record pressure came from Gujarat, Maharashtra, SSCB, and Odisha &mdash; a healthy distribution across geographies.</p>
+        <p><b>The relay acceleration is strategically significant.</b> Karnataka broke three relay national records in 2026. Relay records require four athletes performing simultaneously at peak; this is a system output, not an individual achievement. It indicates Karnataka has achieved critical mass in Women&rsquo;s freestyle and medley depth simultaneously, creating a compounding effect where relay practice improves individual race sense and individual improvement lifts relay times.</p>
+        <p><b>Programme risk flag:</b> Men 1500m and Men 800m national records are both held by Nehra. He broke the 1500m record by 14.88 seconds in 2026. If Nehra exits the programme (injury, age, career transition), there is currently no documented successor within the available data approaching his times. SFI must identify and accelerate the next distance freestyle pipeline athlete immediately &mdash; this is the single highest-priority athlete development action the data surfaces.</p>
+        <p><b>Data governance action:</b> all 15 NMR rows from 2026 and the top-10 record-pressure events from prior years must be validated against the official SFISWIM national record registry before any external communication. Printed records in meet PDFs may not reflect interim record updates set at international competitions. This is a credibility risk, not a data quality issue.</p>
+      </div>
+      <div class="insight-pills">
+        <span class="insight-pill hot">15 NMR flags in 2026</span>
+        <span class="insight-pill hot">Nehra: 4 of top-10 pressure events</span>
+        <span class="insight-pill hot">Karnataka: 3 relay records broken</span>
+        <span class="insight-pill warn">No Nehra successor identified</span>
+        <span class="insight-pill warn">Validate vs. official registry before publishing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREDICTIONS -->
+<section class="section" id="predictions">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">Predictive analysis &middot; LA28 pathway</p>
+      <h2>Against real LA28 Olympic A standards, India projects zero locks and a handful of credible stretch events by 2028.</h2>
+      <p>Winner times are projected from 2022&ndash;2026 trends using regression with a conservative 50% deceleration assumption, then scored against the official World Aquatics LA28 qualification standards.</p>
+    </div>
+
+    <div class="pred-disclaimer">
+      <b>Method &amp; honest limits.</b> Each event has at most 5 annual data points (2022&ndash;2026). The primary projection is an exponential-decay model (improvement slows as athletes approach world level); a linear regression is shown as a sensitivity check. Both apply your 50% deceleration assumption to the historical improvement rate. Confidence bands are &plusmn;2 standard errors of the regression slope &mdash; wide bands reflect data sparsity, not just trajectory. This model has no injury data, no international-exposure data, and no training-load data. <b>It informs funding decisions; it does not make them.</b> The six new 50m events (backstroke/breaststroke/butterfly) qualify via World Cup 2027 finals placement, not time standards &mdash; flagged separately below.
+    </div>
+
+    <div class="grid-4" style="margin-bottom:28px">
+      <div class="kpi-card accent">
+        <div class="kpi-label">A-standard locks</div>
+        <div class="kpi-value" style="color:var(--green)">2</div>
+        <div class="kpi-sub">Men 50m Back &amp; Fly &mdash; <b>via World Cup pathway</b></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">B-standard reachable</div>
+        <div class="kpi-value" style="color:#e6a817">2</div>
+        <div class="kpi-sub">Men 1500m &amp; 800m Free &mdash; <b>invitation route</b></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Realistic stretch (&le;3% off A)</div>
+        <div class="kpi-value">5</div>
+        <div class="kpi-sub">Concentrated in <b>men's distance &amp; back</b></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Out of reach by 2028</div>
+        <div class="kpi-value" style="color:var(--pewter)">28</div>
+        <div class="kpi-sub"><b>&gt;3% off A</b> &mdash; stop event-specific funding</div>
+      </div>
+    </div>
+
+    <div class="pred-tabs">
+      <button class="pred-tab active" onclick="predTab('event')">Event pathway</button>
+      <button class="pred-tab" onclick="predTab('athlete')">Athlete funding list</button>
+      <button class="pred-tab" onclick="predTab('gap')">Gap analysis</button>
+    </div>
+
+    <!-- EVENT PATHWAY -->
+    <div id="pred-event" class="pred-pane active">
+      <div class="grid-2" style="margin-bottom:20px">
+        <div class="panel">
+          <div class="panel-head"><h3>Projected 2028 time vs. A standard</h3><span class="panel-badge badge-blue">closest 12 events</span></div>
+          <div class="panel-body"><div class="bar-chart" id="predGapChart"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>How to read the traffic lights</h3></div>
+          <div class="panel-body" style="font-size:13px;color:var(--charcoal);line-height:1.7">
+            <p style="margin-bottom:10px"><span class="tl tl-green"><span class="tl-dot"></span>Green</span> &mdash; the optimistic edge of the confidence band (the fastest credible 2028 time) clears the standard. A realistic target.</p>
+            <p style="margin-bottom:10px"><span class="tl tl-yellow"><span class="tl-dot"></span>Yellow</span> &mdash; projected time lands within 1.5% of the standard. Achievable with focused intervention, not guaranteed.</p>
+            <p><span class="tl tl-red"><span class="tl-dot"></span>Red</span> &mdash; projected time remains outside the standard even at the optimistic edge. Not a credible 2028 target on current trajectory.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUALIFICATION TIMELINE -->
+      <div class="panel" style="margin-bottom:20px">
+        <div class="panel-head"><h3>Qualification window &mdash; meets remaining to LA28</h3><span class="panel-badge badge-blue">window closes 18 Jun 2028</span></div>
+        <div class="panel-body">
+          <p style="font-size:13px;color:var(--charcoal);margin-bottom:4px;line-height:1.6">Qualifying times count only between <b>1 March 2027</b> and <b>18 June 2028</b>, achieved at World Aquatics-approved meets. Two gates dominate: <b>Budapest 2027</b> (the relay qualifier and the main individual standard-chasing window) and <b>World Cup 2027</b> (the only route for the new 50m events). The runway is short.</p>
+          <div class="qual-timeline"><svg class="qt-svg" id="qtSvg" viewBox="0 0 900 130"></svg></div>
+        </div>
+      </div>
+
+      <!-- TRAJECTORY CHARTS -->
+      <div class="panel" style="margin-bottom:20px">
+        <div class="panel-head"><h3>Winner-time trajectories &mdash; where the trend actually points</h3><span class="panel-badge badge-orange">5 data points + 2 projections</span></div>
+        <div class="panel-body">
+          <p style="font-size:13px;color:var(--charcoal);margin-bottom:14px;line-height:1.6">Black dots are actual national winner times (2022&ndash;2026). Orange dots are the 2027&ndash;2028 projection under the conservative model. The green line is the LA28 A standard; the dashed line is the B (invitation) standard. The eye can see how few points anchor each line &mdash; that sparsity is the honest limit of any projection here.</p>
+          <div class="traj-grid" id="trajGrid"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Full event projection table</h3><span class="panel-badge badge-orange" id="predRowCount">&mdash;</span></div>
+        <div class="table-wrap">
+          <table class="proj-table">
+            <thead><tr>
+              <th>Event</th><th class="num">2026 time</th><th class="num">2028 proj</th>
+              <th class="num">Conf. band</th><th class="num">A std</th><th class="num">Gap to A</th>
+              <th>A verdict</th><th class="num">B std</th><th>B verdict</th>
+            </tr></thead>
+            <tbody id="predTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NEHRA RISK PANEL -->
+      <div class="nehra-risk">
+        <h4>&#9888; Single-athlete dependency &mdash; the Nehra problem, modelled</h4>
+        <p>Three of India's four best LA28 pathways &mdash; Men 1500m, Men 800m Freestyle, and the Men 400m Medley stretch &mdash; depend wholly or partly on <b>Aryan Nehra</b>. He holds the national records and is the only athlete in the dataset projecting within range of the B standard in distance freestyle. The model's "India 2028 readiness" is not a programme property; it is largely one athlete's property.</p>
+        <p>The scenario split below shows what India's distance-freestyle Olympic pathway looks like with Nehra in the squad versus without him. Without a successor, the pathway collapses from "2 B-standard-reachable events" to "0".</p>
+        <div class="scenario-grid">
+          <div class="scenario-box">
+            <h5 class="with">Scenario A &mdash; with Nehra</h5>
+            <div class="scenario-row"><span>Men 1500m Free B-standard</span><span style="font-weight:700;color:var(--green)">Reachable (+0.4%)</span></div>
+            <div class="scenario-row"><span>Men 800m Free B-standard</span><span style="font-weight:700;color:var(--green)">Reachable (+0.8%)</span></div>
+            <div class="scenario-row"><span>Men 400m Medley stretch</span><span style="font-weight:700;color:#e6a817">In range</span></div>
+            <div class="scenario-row"><span>Distance Olympic pathway</span><span style="font-weight:700;color:var(--green)">Live</span></div>
+          </div>
+          <div class="scenario-box">
+            <h5 class="without">Scenario B &mdash; without Nehra</h5>
+            <div class="scenario-row"><span>Next-fastest Men 1500m (data)</span><span style="font-weight:700;color:#c43a00">&gt;30s slower</span></div>
+            <div class="scenario-row"><span>Men 800m Free B-standard</span><span style="font-weight:700;color:#c43a00">No candidate</span></div>
+            <div class="scenario-row"><span>Men 400m Medley stretch</span><span style="font-weight:700;color:#c43a00">No candidate</span></div>
+            <div class="scenario-row"><span>Distance Olympic pathway</span><span style="font-weight:700;color:#c43a00">Collapses</span></div>
+          </div>
+        </div>
+        <p style="margin-top:14px"><b>Funding implication:</b> the single highest-leverage action the model surfaces is not an event-camp &mdash; it is identifying and accelerating a second distance-freestyle athlete before Budapest 2027. Nehra is one injury away from removing India's entire distance-freestyle Olympic case.</p>
+      </div>
+
+      <!-- RELAY PATHWAY -->
+      <div class="panel" style="margin-top:20px">
+        <div class="panel-head"><h3>Relay pathway &mdash; the top-12 NOC route, tested honestly</h3><span class="panel-badge badge-orange">qualify via Budapest 2027 heats</span></div>
+        <div class="panel-body">
+          <p style="font-size:13px;color:var(--charcoal);margin-bottom:14px;line-height:1.6">Relays qualify differently: the 12 fastest NOCs in the heats at Budapest 2027 take the LA28 places, and the spot belongs to the federation, not named athletes. On paper this looks like a lower bar &mdash; and Karnataka's women's relays have broken national records. The model tests whether that domestic momentum reaches the world qualifying line. <b>It does not.</b> Each bar shows India's projected 2027 relay time against the approximate top-12 qualifying threshold; the black mark is the qualifying line.</p>
+          <div id="relayList"></div>
+          <div class="gap-translate" style="margin-top:16px">
+            <b>Honest reading:</b> every Indian relay projects <b>5&ndash;9% outside</b> the top-12 NOC qualifying bar for Budapest 2027 &mdash; further from the relay pathway than the best individual events are from the A standard. The relay national records are real and worth celebrating domestically, but they do not translate into an Olympic relay qualification case by 2028. SFI should fund relays for <b>depth and 2032 development</b>, not as a 2028 qualification route, and should not let domestic relay records create external expectations the world times will not support.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATHLETE FUNDING LIST -->
+    <div id="pred-athlete" class="pred-pane">
+      <div class="pred-disclaimer" style="background:#eef4fb;border-color:#bcd5f0;color:#1a3a5c">
+        <b>Why age-at-2028 matters.</b> LA28 standards are achieved by named individuals during the 1 March 2027 &ndash; 18 June 2028 window. An athlete's age at the Games is the strongest single moderator of whether a current improvement trend continues. Swimmers typically peak at 22&ndash;26. The funding list below ranks athletes by progression score and flags their projected age at LA28, so SFI funds athletes who will be in their physical prime in 2028 &mdash; not those whose window will already have closed or not yet opened.
+      </div>
+      <div class="athlete-grid" id="athleteCards"></div>
+    </div>
+
+    <!-- GAP ANALYSIS -->
+    <div id="pred-gap" class="pred-pane">
+      <div class="grid-2" style="margin-bottom:20px">
+        <div class="panel">
+          <div class="panel-head"><h3>Where India has a credible 2028 case</h3><span class="panel-badge badge-green">fund these</span></div>
+          <div class="panel-body"><div id="gapFund"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Structurally out of reach by 2028</h3><span class="panel-badge badge-orange">stop event-specific spend</span></div>
+          <div class="panel-body"><div id="gapStop"></div></div>
+        </div>
+      </div>
+      <div class="insight">
+        <div class="insight-label">Data insight &mdash; LA28 pathway &amp; resource allocation</div>
+        <div class="insight-headline">The honest LA28 picture is narrower than the World Championship comparison suggested: against real Olympic A standards, India has two new-event locks and two invitation-route distance events &mdash; everything else is a development project, not a 2028 target.</div>
+        <div class="insight-body">
+          <p>When national winner times are projected to 2028 and scored against the actual LA28 A standards rather than World Championship 8th-place times, the field collapses. <b>Only the two new men's 50m events (Backstroke, Butterfly) project to clear the A-standard-equivalent</b>, and they do so through the World Cup 2027 finals pathway &mdash; a top-6 placement at a World Cup stop &mdash; rather than a time standard. This is genuinely India's most realistic Olympic individual-event route, and it is currently under-recognised because the new events did not exist in prior cycles.</p>
+          <p><b>The distance freestyle story survives, but only at the B standard.</b> Men 1500m projects to 15:04, which clears the B standard (15:00.54) by a narrow 0.4% but misses the A standard (14:51.62) by 1.4%. The B standard is invitation-only and not guaranteed &mdash; it fills the quota after A-standard athletes, relay competitors, and universality places. India should treat the 1500m as a live but contingent pathway, dependent on Nehra and on the global B-standard cut-off in 2028.</p>
+          <p><b>The strongest statistical trends are not the strongest pathways.</b> Men 200m Backstroke and Men 100m Backstroke show the cleanest regression fits (r = &minus;0.95 and &minus;0.96), meaning their improvement is highly consistent &mdash; but they start too far back (2.2% and 3.6% off A) to reach the standard by 2028 even on a clean trend. Consistency of improvement and proximity to world level are different things; SFI should fund where they overlap, which is a very short list.</p>
+          <p><b>Resource-allocation conclusion:</b> 28 of 34 individual events are more than 3% off the A standard on the optimistic edge of their confidence band. For these events, 2028 is not a realistic target and event-specific high-performance spend will not change that within the window. The disciplined move is to concentrate LA28 funding on the two new 50m events plus men's distance freestyle, treat the backstroke events as 2032 development projects, and redirect the rest toward broad pipeline depth rather than Olympic qualification chasing.</p>
+        </div>
+        <div class="insight-pills">
+          <span class="insight-pill good">2 new-event locks (World Cup route)</span>
+          <span class="insight-pill good">Men 1500m: B-standard reachable</span>
+          <span class="insight-pill warn">28 events &gt;3% off A standard</span>
+          <span class="insight-pill warn">Backstroke: clean trend, too far back</span>
+          <span class="insight-pill hot">Fund new 50m events + distance free</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section class="section linen" id="downloads">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow">Publication package</p>
+      <h2>The evidence package gives leaders the story, analysts the workbook, and reviewers the source trail.</h2>
+    </div>
+    <div class="dl-grid" id="downloadGrid"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SFI Analytics by Ram Paragi</div>
+      <div>Generated from 48 attached 2022&ndash;2026 Indian Senior National result PDFs<br>and official OMEGA World Aquatics Championships 2025 final result pages.</div>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <a href="https://www.linkedin.com/in/ramnarayan/" target="_blank" rel="noopener" class="social-icon linkedin" data-tip="LinkedIn" aria-label="LinkedIn" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.4)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/DatadrivenMed" target="_blank" rel="noopener" class="social-icon x-twitter" data-tip="X" aria-label="X" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.4)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://swimed.substack.com/" target="_blank" rel="noopener" class="social-icon substack" data-tip="Substack" aria-label="Substack" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.4)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div style="text-align:right;font-size:12px">Data scope: 5,532 result rows &middot; 1,735 final rows &middot; 0 unmatched lines<br>Benchmark: World Aquatics Singapore 2025 (OMEGA official results)</div>
+  </div>
+</footer>
+
+<script>
+const PRIORITIES=[
+  {gender:"Men",event:"1500m Freestyle",category:"Distance",score:95.8,tier:"International-readiness priority",action:"International exposure and event-specific high-performance support",momentum:53.96,worldGap:-0.45,conversion:1.0},
+  {gender:"Men",event:"800m Freestyle",category:"Distance",score:69.6,tier:"High development priority",action:"International exposure and event-specific high-performance support",momentum:23.81,worldGap:0.17,conversion:0},
+  {gender:"Women",event:"400m Medley",category:"Middle Distance",score:66.9,tier:"High development priority",action:"National record push with targeted race planning",momentum:15.70,worldGap:5.91,conversion:0.89},
+  {gender:"Women",event:"200m Freestyle",category:"Middle Distance",score:62.1,tier:"Pipeline-build priority",action:"International exposure and event-specific high-performance support",momentum:5.17,worldGap:2.42,conversion:0.36},
+  {gender:"Women",event:"200m Medley",category:"Middle Distance",score:60.6,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:4.54,worldGap:5.76,conversion:0.50},
+  {gender:"Men",event:"400m Medley",category:"Middle Distance",score:57.7,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:5.84,worldGap:4.55,conversion:0.67},
+  {gender:"Men",event:"200m Medley",category:"Middle Distance",score:57.6,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:1.38,worldGap:4.09,conversion:0.50},
+  {gender:"Men",event:"200m Backstroke",category:"Middle Distance",score:57.4,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:4.24,worldGap:3.13,conversion:0.50},
+  {gender:"Men",event:"50m Backstroke",category:"Sprint 50",score:57.4,tier:"Pipeline-build priority",action:"International exposure and event-specific high-performance support",momentum:1.12,worldGap:2.84,conversion:0.33},
+  {gender:"Women",event:"100m Freestyle",category:"Sprint 100",score:56.2,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:1.15,worldGap:5.92,conversion:0.26},
+  {gender:"Women",event:"100m Butterfly",category:"Sprint 100",score:56.0,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:3.38,worldGap:4.72,conversion:0.36},
+  {gender:"Men",event:"4x100m Medley",category:"Relay",score:54.7,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:3.02,worldGap:5.83,conversion:0.89},
+  {gender:"Men",event:"400m Freestyle",category:"Middle Distance",score:54.5,tier:"Pipeline-build priority",action:"Maintain monitoring and keep event in trend dashboard",momentum:5.99,worldGap:3.74,conversion:0.53},
+  {gender:"Women",event:"200m Butterfly",category:"Middle Distance",score:52.5,tier:"Pipeline-build priority",action:"Depth-building priority across states and age cohorts",momentum:5.34,worldGap:7.82,conversion:0.57},
+  {gender:"Men",event:"200m Freestyle",category:"Middle Distance",score:52.3,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:1.84,worldGap:4.47,conversion:0.35},
+  {gender:"Men",event:"100m Backstroke",category:"Sprint 100",score:52.1,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:1.96,worldGap:5.36,conversion:0.33},
+  {gender:"Women",event:"400m Freestyle",category:"Middle Distance",score:51.7,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:5.98,worldGap:6.39,conversion:0.57},
+  {gender:"Men",event:"50m Butterfly",category:"Sprint 50",score:51.0,tier:"Pipeline-build priority",action:"National record push with targeted race planning",momentum:1.44,worldGap:3.10,conversion:0.25},
+  {gender:"Women",event:"800m Freestyle",category:"Distance",score:49.9,tier:"Monitor",action:"National record push with targeted race planning",momentum:11.78,worldGap:7.62,conversion:0},
+  {gender:"Men",event:"100m Freestyle",category:"Sprint 100",score:49.1,tier:"Monitor",action:"National record push with targeted race planning",momentum:1.16,worldGap:5.57,conversion:0.28}
+];
+const TEAMS=[
+  {team:"Karnataka",points:1750,medals:175,top8:304,medalConv:0.576,heatEntries:314,finalists:238,convRate:0.758},
+  {team:"Maharashtra",points:963,medals:81,top8:214,medalConv:0.379,heatEntries:297,finalists:171,convRate:0.576},
+  {team:"RSPB",points:748,medals:58,top8:154,medalConv:0.377,heatEntries:206,finalists:135,convRate:0.655},
+  {team:"Tamil Nadu",points:687,medals:55,top8:147,medalConv:0.374,heatEntries:258,finalists:127,convRate:0.492},
+  {team:"SSCB",points:492,medals:38,top8:102,medalConv:0.373,heatEntries:149,finalists:83,convRate:0.557},
+  {team:"Delhi",points:346,medals:27,top8:69,medalConv:0.391,heatEntries:146,finalists:42,convRate:0.288},
+  {team:"Gujarat",points:330,medals:27,top8:67,medalConv:0.403,heatEntries:161,finalists:53,convRate:0.329},
+  {team:"West Bengal",points:279,medals:15,top8:75,medalConv:0.200,heatEntries:155,finalists:63,convRate:0.406},
+  {team:"Odisha",points:238,medals:15,top8:58,medalConv:0.259,heatEntries:151,finalists:51,convRate:0.338},
+  {team:"Telangana",points:230,medals:21,top8:50,medalConv:0.420,heatEntries:162,finalists:36,convRate:0.222},
+  {team:"Assam",points:226,medals:17,top8:53,medalConv:0.321,heatEntries:101,finalists:47,convRate:0.465},
+  {team:"Madhya Pradesh",points:107,medals:7,top8:27,medalConv:0.259,heatEntries:90,finalists:20,convRate:0.222}
+];
+const B8=[
+  {gender:"Men",event:"1500m Freestyle",indiaTime:"15:14.88",worldTime:"15:19.06",gapPct:-0.45},
+  {gender:"Men",event:"800m Freestyle",indiaTime:"7:59.36",worldTime:"7:58.56",gapPct:0.17},
+  {gender:"Women",event:"200m Freestyle",indiaTime:"2:03.07",worldTime:"2:00.16",gapPct:2.42},
+  {gender:"Men",event:"50m Backstroke",indiaTime:"25.32",worldTime:"24.62",gapPct:2.84},
+  {gender:"Men",event:"50m Butterfly",indiaTime:"23.63",worldTime:"22.92",gapPct:3.10},
+  {gender:"Men",event:"200m Backstroke",indiaTime:"1:59.90",worldTime:"1:56.26",gapPct:3.13},
+  {gender:"Men",event:"400m Freestyle",indiaTime:"3:55.34",worldTime:"3:46.86",gapPct:3.74},
+  {gender:"Men",event:"100m Butterfly",indiaTime:"53.17",worldTime:"51.12",gapPct:4.01},
+  {gender:"Women",event:"400m Medley",indiaTime:"4:56.78",worldTime:"4:40.21",gapPct:5.91},
+  {gender:"Women",event:"100m Freestyle",indiaTime:"56.57",worldTime:"53.41",gapPct:5.92}
+];
+const BGOLD=[
+  {gender:"Men",event:"1500m Freestyle",indiaTime:"15:14.88",worldTime:"14:34.41",gapPct:4.63,performer:"JAOUADI Ahmed (TUN)"},
+  {gender:"Men",event:"800m Freestyle",indiaTime:"7:59.36",worldTime:"7:36.88",gapPct:4.92,performer:"JAOUADI Ahmed (TUN)"},
+  {gender:"Men",event:"50m Butterfly",indiaTime:"23.63",worldTime:"22.48",gapPct:5.12,performer:"GROUSSET Maxime (FRA)"},
+  {gender:"Men",event:"400m Freestyle",indiaTime:"3:55.34",worldTime:"3:42.35",gapPct:5.84,performer:"MARTENS Lukas (GER)"},
+  {gender:"Men",event:"200m Backstroke",indiaTime:"1:59.90",worldTime:"1:53.19",gapPct:5.93,performer:"KOS Hubert (HUN)"},
+  {gender:"Men",event:"100m Breaststroke",indiaTime:"1:02.19",worldTime:"58.23",gapPct:6.80,performer:"QIN Haiyang (CHN)"},
+  {gender:"Men",event:"200m Freestyle",indiaTime:"1:50.65",worldTime:"1:43.53",gapPct:6.88,performer:"POPOVICI David (ROU)"},
+  {gender:"Men",event:"100m Backstroke",indiaTime:"55.44",worldTime:"51.85",gapPct:6.92,performer:"COETZE Pieter (RSA)"},
+  {gender:"Men",event:"50m Backstroke",indiaTime:"25.32",worldTime:"23.68",gapPct:6.93,performer:"KOLESNIKOV Kliment (NAB)"},
+  {gender:"Women",event:"200m Freestyle",indiaTime:"2:03.07",worldTime:"1:53.48",gapPct:8.45,performer:"O'CALLAGHAN Mollie (AUS)"}
+];
+const MOMENTUM=[
+  {gender:"Men",event:"1500m Freestyle",improvement:53.96},
+  {gender:"Men",event:"800m Freestyle",improvement:23.81},
+  {gender:"Women",event:"1500m Freestyle",improvement:20.00},
+  {gender:"Women",event:"4x200m Freestyle",improvement:17.22},
+  {gender:"Women",event:"400m Medley",improvement:15.70},
+  {gender:"Men",event:"4x200m Freestyle",improvement:15.68},
+  {gender:"Women",event:"4x100m Medley",improvement:14.76},
+  {gender:"Women",event:"800m Freestyle",improvement:11.78}
+];
+const ATHLETES=[
+  {name:"Manavi Varma",team:"Karnataka",score:22.7,impYears:3,profile:"Versatile & progressing"},
+  {name:"Shristi Upadhaya",team:"Odisha",score:22.0,impYears:5,profile:"Progressing"},
+  {name:"Mannata Mishra",team:"Odisha",score:19.7,impYears:6,profile:"Progressing"},
+  {name:"Aditi Satish",team:"Maharashtra",score:19.4,impYears:4,profile:"Progressing"},
+  {name:"Soubrity Mondal",team:"West Bengal",score:8.1,impYears:3,profile:"Progressing"},
+  {name:"Dhinidhi Desinghu",team:"Karnataka",score:7.1,impYears:3,profile:"Progressing"},
+  {name:"Bhavya Sachdeva",team:"Delhi",score:6.2,impYears:4,profile:"Progressing"},
+  {name:"Pratyasa Ray",team:"Odisha",score:6.4,impYears:3,profile:"Progressing"},
+  {name:"Vritti Agarwal",team:"Telangana",score:11.1,impYears:6,profile:"Progressing"},
+  {name:"Aneesh S Gowda",team:"Karnataka",score:3.0,impYears:4,profile:"Single-event finalist"}
+];
+const PIPELINE=[
+  {gender:"Women",stroke:"Medley",category:"Middle Distance",teams:14,points:371,medals:30,avgRank:4.44},
+  {gender:"Men",stroke:"Freestyle",category:"Distance",teams:11,points:370,medals:30,avgRank:4.50},
+  {gender:"Men",stroke:"Freestyle",category:"Middle Distance",teams:17,points:370,medals:30,avgRank:4.50},
+  {gender:"Men",stroke:"Medley",category:"Middle Distance",teams:14,points:370,medals:30,avgRank:4.50},
+  {gender:"Women",stroke:"Freestyle",category:"Middle Distance",teams:11,points:370,medals:30,avgRank:4.50},
+  {gender:"Women",stroke:"Freestyle",category:"Distance",teams:9,points:367,medals:30,avgRank:4.42},
+  {gender:"Men",stroke:"Freestyle",category:"Relay",teams:14,points:294,medals:24,avgRank:4.39},
+  {gender:"Women",stroke:"Butterfly",category:"Sprint 100",teams:13,points:188,medals:15,avgRank:4.45}
+];
+const RECORDS=[
+  {year:2026,gender:"Men",event:"1500m Freestyle",winner:"Aryan Nehra",team:"Gujarat",time:"15:14.88",gap:-14.88},
+  {year:2026,gender:"Women",event:"1500m Freestyle",winner:"Aditi Satish Hegde",team:"Maharashtra",time:"17:20.82",gap:-14.25},
+  {year:2026,gender:"Women",event:"4x200m Freestyle",winner:"Karnataka",team:"Karnataka",time:"8:42.48",gap:-9.84},
+  {year:2026,gender:"Women",event:"4x100m Freestyle",winner:"Karnataka",team:"Karnataka",time:"3:53.45",gap:-8.38},
+  {year:2023,gender:"Men",event:"1500m Freestyle",winner:"Aryan Nehra",team:"Gujarat",time:"15:29.76",gap:-8.37},
+  {year:2023,gender:"Men",event:"800m Freestyle",winner:"Aryan Nehra",team:"Gujarat",time:"8:01.81",gap:-6.51},
+  {year:2023,gender:"Women",event:"4x100m Medley",winner:"Maharashtra",team:"Maharashtra",time:"4:23.65",gap:-6.16},
+  {year:2026,gender:"Women",event:"4x100m Medley",winner:"Karnataka",team:"Karnataka",time:"4:18.72",gap:-4.93},
+  {year:2023,gender:"Men",event:"400m Medley",winner:"Aryan Nehra",team:"Gujarat",time:"4:25.62",gap:-4.51},
+  {year:2025,gender:"Women",event:"1500m Freestyle",winner:"Bhavya Sachdeva",team:"Delhi",time:"17:35.07",gap:-4.09},
+  {year:2026,gender:"Men",event:"800m Freestyle",winner:"Aryan Nehra",team:"Gujarat",time:"7:59.36",gap:-2.45},
+  {year:2026,gender:"Women",event:"400m Medley",winner:"Thanya Shadakshari",team:"Karnataka",time:"4:56.78",gap:-2.39},
+  {year:2026,gender:"Women",event:"200m Medley",winner:"Saanvi Deshwal",team:"Maharashtra",time:"2:19.15",gap:-2.0},
+  {year:2026,gender:"Men",event:"200m Backstroke",winner:"Rishabh Anupam Das",team:"Maharashtra",time:"1:59.90",gap:-0.75},
+  {year:2026,gender:"Men",event:"200m Medley",winner:"Vinayak Vijay",team:"SSCB",time:"2:04.13",gap:-0.21}
+];
+
+const PRED=[{g:"Men",e:"50m Backstroke",nw:true,cur:"25.32",A:"25.35",B:null,lin:"25.05",exp:"25.13",ciL:"24.85",ciH:"25.25",gapA:-1.17,gapB:-1.17,lA:"green",lB:"green",r:-0.837,n:5},{g:"Men",e:"50m Butterfly",nw:true,cur:"23.63",A:"23.55",B:null,lin:"23.33",exp:"23.34",ciL:"23.22",ciH:"23.45",gapA:-0.92,gapB:-0.92,lA:"green",lB:"green",r:-0.949,n:5},{g:"Men",e:"1500m Freestyle",nw:false,cur:"15:14.88",A:"14:51.62",B:"15:00.54",lin:"15:04.41",exp:"15:03.41",ciL:"14:52.41",ciH:"15:16.40",gapA:1.43,gapB:0.43,lA:"yellow",lB:"green",r:-0.71,n:5},{g:"Men",e:"800m Freestyle",nw:false,cur:"7:59.36",A:"7:47.04",B:"7:51.71",lin:"7:55.46",exp:"7:54.30",ciL:"7:49.16",ciH:"8:01.75",gapA:1.8,gapB:0.79,lA:"red",lB:"green",r:-0.582,n:5},{g:"Men",e:"200m Backstroke",nw:false,cur:"1:59.90",A:"1:56.05",B:"1:57.21",lin:"1:58.56",exp:"1:58.90",ciL:"1:58.04",ciH:"1:59.08",gapA:2.16,gapB:1.15,lA:"red",lB:"yellow",r:-0.947,n:5},{g:"Men",e:"50m Breaststroke",nw:true,cur:"28.38",A:"27.71",B:null,lin:"28.32",exp:"28.31",ciL:"28.21",ciH:"28.43",gapA:2.19,gapB:2.19,lA:"red",lB:"red",r:-0.548,n:5},{g:"Men",e:"100m Butterfly",nw:false,cur:"53.17",A:"51.06",B:"51.57",lin:"52.62",exp:"52.75",ciL:"52.29",ciH:"52.96",gapA:3.06,gapB:2.04,lA:"red",lB:"red",r:-0.884,n:5},{g:"Men",e:"100m Backstroke",nw:false,cur:"55.44",A:"53.00",B:"53.53",lin:"54.89",exp:"54.98",ciL:"54.71",ciH:"55.07",gapA:3.56,gapB:2.54,lA:"red",lB:"red",r:-0.963,n:5},{g:"Women",e:"50m Butterfly",nw:true,cur:"27.67",A:"26.57",B:null,lin:"27.54",exp:"27.48",ciL:"27.30",ciH:"27.78",gapA:3.65,gapB:3.65,lA:"red",lB:"red",r:-0.522,n:5},{g:"Men",e:"400m Freestyle",nw:false,cur:"3:55.34",A:"3:45.46",B:"3:47.71",lin:"3:54.04",exp:"3:53.60",ciL:"3:51.47",ciH:"3:56.61",gapA:3.81,gapB:2.78,lA:"red",lB:"red",r:-0.504,n:5},{g:"Women",e:"100m Butterfly",nw:false,cur:"1:00.07",A:"57.38",B:"57.95",lin:"59.57",exp:"59.43",ciL:"58.63",ciH:"1:00.50",gapA:3.81,gapB:2.79,lA:"red",lB:"red",r:-0.527,n:5},{g:"Men",e:"200m Freestyle",nw:false,cur:"1:50.65",A:"1:45.83",B:"1:46.89",lin:"1:50.16",exp:"1:50.26",ciL:"1:49.95",ciH:"1:50.36",gapA:4.09,gapB:3.06,lA:"red",lB:"red",r:-0.942,n:5},{g:"Women",e:"200m Freestyle",nw:false,cur:"2:03.07",A:"1:56.43",B:"1:57.59",lin:"2:01.70",exp:"2:01.75",ciL:"2:00.54",ciH:"2:02.86",gapA:4.53,gapB:3.49,lA:"red",lB:"red",r:-0.808,n:5},{g:"Men",e:"400m Medley",nw:false,cur:"4:24.80",A:"4:11.52",B:"4:14.04",lin:"4:23.32",exp:"4:23.33",ciL:"4:19.91",ciH:"4:26.73",gapA:4.69,gapB:3.65,lA:"red",lB:"red",r:-0.448,n:5},{g:"Women",e:"50m Backstroke",nw:true,cur:"29.85",A:"28.59",B:null,lin:"29.95",exp:"29.95",ciL:"29.68",ciH:"30.21",gapA:4.74,gapB:4.74,lA:"red",lB:"red",r:0.39,n:5},{g:"Men",e:"100m Freestyle",nw:false,cur:"50.40",A:"47.86",B:"48.34",lin:"50.20",exp:"50.15",ciL:"49.93",ciH:"50.48",gapA:4.89,gapB:3.85,lA:"red",lB:"red",r:-0.642,n:5},{g:"Men",e:"100m Breaststroke",nw:false,cur:"1:02.19",A:"59.27",B:"59.86",lin:"1:02.20",exp:"1:02.12",ciL:"1:01.69",ciH:"1:02.71",gapA:4.95,gapB:3.91,lA:"red",lB:"red",r:0.027,n:5},{g:"Women",e:"100m Freestyle",nw:false,cur:"56.57",A:"53.60",B:"54.14",lin:"56.29",exp:"56.32",ciL:"55.81",ciH:"56.76",gapA:5.01,gapB:3.97,lA:"red",lB:"red",r:-0.571,n:5},{g:"Men",e:"200m Medley",nw:false,cur:"2:04.13",A:"1:57.54",B:"1:58.72",lin:"2:03.65",exp:"2:03.81",ciL:"2:02.74",ciH:"2:04.57",gapA:5.2,gapB:4.16,lA:"red",lB:"red",r:-0.516,n:5},{g:"Women",e:"400m Medley",nw:false,cur:"4:56.78",A:"4:37.33",B:"4:40.10",lin:"4:52.93",exp:"4:53.44",ciL:"4:51.70",ciH:"4:54.16",gapA:5.63,gapB:4.58,lA:"red",lB:"red",r:-0.964,n:5},{g:"Women",e:"200m Medley",nw:false,cur:"2:19.15",A:"2:09.90",B:"2:11.20",lin:"2:17.60",exp:"2:17.42",ciL:"2:15.96",ciH:"2:19.23",gapA:5.92,gapB:4.88,lA:"red",lB:"red",r:-0.739,n:5},{g:"Women",e:"50m Freestyle",nw:false,cur:"26.23",A:"24.56",B:"24.81",lin:"26.14",exp:"26.14",ciL:"25.99",ciH:"26.28",gapA:6.41,gapB:5.36,lA:"red",lB:"red",r:-0.616,n:5},{g:"Men",e:"200m Butterfly",nw:false,cur:"2:02.50",A:"1:54.69",B:"1:55.84",lin:"2:02.37",exp:"2:02.40",ciL:"2:00.94",ciH:"2:03.79",gapA:6.69,gapB:5.64,lA:"red",lB:"red",r:-0.107,n:5},{g:"Women",e:"1500m Freestyle",nw:false,cur:"17:20.82",A:"16:08.65",B:"16:18.34",lin:"17:15.21",exp:"17:16.57",ciL:"17:09.73",ciH:"17:20.70",gapA:6.87,gapB:5.81,lA:"red",lB:"red",r:-0.763,n:5},{g:"Women",e:"800m Freestyle",nw:false,cur:"9:05.47",A:"8:26.71",B:"8:31.78",lin:"9:02.52",exp:"9:02.97",ciL:"9:01.09",ciH:"9:03.95",gapA:7.07,gapB:6.01,lA:"red",lB:"red",r:-0.922,n:5},{g:"Men",e:"50m Freestyle",nw:false,cur:"23.24",A:"21.69",B:"21.91",lin:"23.23",exp:"23.20",ciL:"23.00",ciH:"23.45",gapA:7.08,gapB:6.02,lA:"red",lB:"red",r:-0.071,n:5},{g:"Women",e:"200m Butterfly",nw:false,cur:"2:18.37",A:"2:08.15",B:"2:09.43",lin:"2:17.33",exp:"2:17.47",ciL:"2:16.90",ciH:"2:17.75",gapA:7.16,gapB:6.1,lA:"red",lB:"red",r:-0.944,n:5},{g:"Women",e:"400m Freestyle",nw:false,cur:"4:25.31",A:"4:06.27",B:"4:08.73",lin:"4:24.12",exp:"4:24.26",ciL:"4:23.13",ciH:"4:25.12",gapA:7.25,gapB:6.19,lA:"red",lB:"red",r:-0.81,n:5},{g:"Women",e:"50m Breaststroke",nw:true,cur:"33.51",A:"31.33",B:null,lin:"33.77",exp:"33.77",ciL:"33.40",ciH:"34.14",gapA:7.79,gapB:7.79,lA:"red",lB:"red",r:0.632,n:5},{g:"Men",e:"200m Breaststroke",nw:false,cur:"2:19.45",A:"2:09.35",B:"2:10.64",lin:"2:19.91",exp:"2:19.91",ciL:"2:18.55",ciH:"2:21.26",gapA:8.16,gapB:7.09,lA:"red",lB:"red",r:0.362,n:5},{g:"Women",e:"200m Backstroke",nw:false,cur:"2:20.22",A:"2:08.95",B:"2:10.24",lin:"2:20.86",exp:"2:20.86",ciL:"2:19.20",ciH:"2:22.52",gapA:9.24,gapB:8.16,lA:"red",lB:"red",r:0.408,n:5},{g:"Women",e:"100m Backstroke",nw:false,cur:"1:04.75",A:"59.49",B:"1:00.08",lin:"1:05.26",exp:"1:05.26",ciL:"1:04.26",ciH:"1:06.25",gapA:9.7,gapB:8.61,lA:"red",lB:"red",r:0.508,n:5},{g:"Women",e:"200m Breaststroke",nw:false,cur:"2:37.81",A:"2:23.49",B:"2:24.92",lin:"2:37.53",exp:"2:37.48",ciL:"2:36.60",ciH:"2:38.47",gapA:9.79,gapB:8.7,lA:"red",lB:"red",r:-0.324,n:5},{g:"Women",e:"100m Breaststroke",nw:false,cur:"1:13.22",A:"1:06.10",B:"1:06.76",lin:"1:13.20",exp:"1:13.14",ciL:"1:12.80",ciH:"1:13.60",gapA:10.74,gapB:9.64,lA:"red",lB:"red",r:-0.06,n:5}];
+const PRED_ATH=[{name:"Jiya Yadav",team:"Uttar Pradesh",prog:35.5,imp:3,medals:0,top8:3,gold:0,age28:18,fy:2022,ly:2025,prof:"Progressing"},{name:"Manavi Varma",team:"Karnataka",prog:22.7,imp:3,medals:7,top8:10,gold:2,age28:20,fy:2022,ly:2025,prof:"Versatile and progressing"},{name:"Shristi Upadhaya",team:"Odisha",prog:22.0,imp:5,medals:2,top8:6,gold:1,age28:26,fy:2022,ly:2025,prof:"Progressing"},{name:"Anvesh Singh",team:"Madhya Pradesh",prog:19.9,imp:2,medals:0,top8:1,gold:0,age28:24,fy:2022,ly:2025,prof:"Progressing"},{name:"Mannata Mishra",team:"Odisha",prog:19.7,imp:6,medals:1,top8:4,gold:0,age28:21,fy:2022,ly:2025,prof:"Progressing"},{name:"Aditi Satish",team:"Maharashtra",prog:19.4,imp:4,medals:5,top8:9,gold:2,age28:18,fy:2024,ly:2026,prof:"Progressing"},{name:"Pratyasa Ray",team:"Odisha",prog:18.0,imp:6,medals:2,top8:8,gold:0,age28:26,fy:2022,ly:2025,prof:"Progressing"},{name:"Dakshina",team:"Rajasthan",prog:15.8,imp:3,medals:1,top8:3,gold:0,age28:18,fy:2024,ly:2026,prof:"Progressing"},{name:"Deeksha Sivakumar",team:"Tamil Nadu",prog:14.8,imp:4,medals:0,top8:2,gold:0,age28:21,fy:2022,ly:2025,prof:"Progressing"},{name:"Manikanta L",team:"Karnataka",prog:13.4,imp:2,medals:1,top8:2,gold:0,age28:24,fy:2022,ly:2025,prof:"Progressing"},{name:"Saswata Roy",team:"West Bengal",prog:12.5,imp:2,medals:0,top8:4,gold:0,age28:22,fy:2022,ly:2023,prof:"Progressing"},{name:"Saanvi",team:"Maharashtra",prog:12.5,imp:3,medals:5,top8:7,gold:3,age28:17,fy:2024,ly:2026,prof:"Versatile and progressing"},{name:"Jiya",team:"Uttar Pradesh",prog:12.4,imp:3,medals:2,top8:6,gold:0,age28:18,fy:2024,ly:2026,prof:"Progressing"},{name:"Jananjoy Jyoti Hazarika",team:"Assam",prog:11.9,imp:4,medals:1,top8:5,gold:0,age28:21,fy:2022,ly:2025,prof:"Progressing"},{name:"Anannya Nayak",team:"Maharashtra",prog:11.2,imp:3,medals:4,top8:7,gold:1,age28:19,fy:2022,ly:2023,prof:"Progressing"},{name:"Vritti Agarwal",team:"Telangana",prog:11.1,imp:6,medals:10,top8:14,gold:0,age28:22,fy:2022,ly:2025,prof:"Progressing"},{name:"Harshitha Jayaram",team:"RSPB",prog:10.9,imp:4,medals:4,top8:7,gold:2,age28:27,fy:2022,ly:2025,prof:"Progressing"},{name:"Aditi N Mulay",team:"Karnataka",prog:10.6,imp:3,medals:0,top8:5,gold:0,age28:21,fy:2022,ly:2025,prof:"Progressing"},{name:"Parth Shrivastava",team:"Chhattisgarh",prog:10.5,imp:2,medals:0,top8:0,gold:0,age28:21,fy:2022,ly:2025,prof:"Progressing"},{name:"Divyanka Dibyajyoti Pradhan",team:"Odisha",prog:10.4,imp:2,medals:0,top8:4,gold:0,age28:22,fy:2023,ly:2025,prof:"Progressing"}];
+
+
+const TRAJ=[{"g":"Men","e":"1500m Freestyle","isNew":false,"pts":[{"yr":2022,"t":968.84,"f":"16:08.84"},{"yr":2023,"t":929.76,"f":"15:29.76"},{"yr":2024,"t":964.11,"f":"16:04.11"},{"yr":2025,"t":932.95,"f":"15:32.95"},{"yr":2026,"t":914.88,"f":"15:14.88"}],"p27":{"yr":2027,"t":909.64,"f":"15:09.64"},"p28":{"yr":2028,"t":904.41,"f":"15:04.41"},"A":891.62,"Af":"14:51.62","B":900.54,"Bf":"15:00.54","gapSec":12.79,"gapPct":1.43},{"g":"Men","e":"800m Freestyle","isNew":false,"pts":[{"yr":2022,"t":503.17,"f":"8:23.17"},{"yr":2023,"t":481.81,"f":"8:01.81"},{"yr":2024,"t":500.01,"f":"8:20.01"},{"yr":2025,"t":490.4,"f":"8:10.40"},{"yr":2026,"t":479.36,"f":"7:59.36"}],"p27":{"yr":2027,"t":477.41,"f":"7:57.41"},"p28":{"yr":2028,"t":475.46,"f":"7:55.46"},"A":467.04,"Af":"7:47.04","B":471.71,"Bf":"7:51.71","gapSec":8.42,"gapPct":1.8},{"g":"Men","e":"50m Backstroke","isNew":true,"pts":[{"yr":2022,"t":26.2,"f":"26.20"},{"yr":2023,"t":26.6,"f":"26.60"},{"yr":2024,"t":26.24,"f":"26.24"},{"yr":2025,"t":25.7,"f":"25.70"},{"yr":2026,"t":25.32,"f":"25.32"}],"p27":{"yr":2027,"t":25.19,"f":"25.19"},"p28":{"yr":2028,"t":25.05,"f":"25.05"},"A":25.35,"Af":"25.35","B":null,"Bf":null,"gapSec":-0.3,"gapPct":-1.17},{"g":"Men","e":"50m Butterfly","isNew":true,"pts":[{"yr":2022,"t":25.0,"f":"25.00"},{"yr":2023,"t":24.33,"f":"24.33"},{"yr":2024,"t":24.22,"f":"24.22"},{"yr":2025,"t":24.11,"f":"24.11"},{"yr":2026,"t":23.63,"f":"23.63"}],"p27":{"yr":2027,"t":23.48,"f":"23.48"},"p28":{"yr":2028,"t":23.33,"f":"23.33"},"A":23.55,"Af":"23.55","B":null,"Bf":null,"gapSec":-0.22,"gapPct":-0.92},{"g":"Men","e":"200m Backstroke","isNew":false,"pts":[{"yr":2022,"t":124.61,"f":"2:04.61"},{"yr":2023,"t":124.64,"f":"2:04.64"},{"yr":2024,"t":123.47,"f":"2:03.47"},{"yr":2025,"t":120.65,"f":"2:00.65"},{"yr":2026,"t":119.9,"f":"1:59.90"}],"p27":{"yr":2027,"t":119.23,"f":"1:59.23"},"p28":{"yr":2028,"t":118.56,"f":"1:58.56"},"A":116.05,"Af":"1:56.05","B":117.21,"Bf":"1:57.21","gapSec":2.51,"gapPct":2.16},{"g":"Women","e":"400m Medley","isNew":false,"pts":[{"yr":2022,"t":312.48,"f":"5:12.48"},{"yr":2023,"t":310.93,"f":"5:10.93"},{"yr":2024,"t":308.1,"f":"5:08.10"},{"yr":2025,"t":303.85,"f":"5:03.85"},{"yr":2026,"t":296.78,"f":"4:56.78"}],"p27":{"yr":2027,"t":294.86,"f":"4:54.86"},"p28":{"yr":2028,"t":292.93,"f":"4:52.93"},"A":277.33,"Af":"4:37.33","B":280.1,"Bf":"4:40.10","gapSec":15.6,"gapPct":5.63},{"g":"Women","e":"200m Freestyle","isNew":false,"pts":[{"yr":2022,"t":129.29,"f":"2:09.29"},{"yr":2023,"t":124.24,"f":"2:04.24"},{"yr":2024,"t":126.49,"f":"2:06.49"},{"yr":2025,"t":122.97,"f":"2:02.97"},{"yr":2026,"t":123.07,"f":"2:03.07"}],"p27":{"yr":2027,"t":122.38,"f":"2:02.38"},"p28":{"yr":2028,"t":121.7,"f":"2:01.70"},"A":116.43,"Af":"1:56.43","B":117.59,"Bf":"1:57.59","gapSec":5.27,"gapPct":4.53},{"g":"Men","e":"400m Medley","isNew":false,"pts":[{"yr":2022,"t":271.71,"f":"4:31.71"},{"yr":2023,"t":265.62,"f":"4:25.62"},{"yr":2024,"t":276.39,"f":"4:36.39"},{"yr":2025,"t":264.64,"f":"4:24.64"},{"yr":2026,"t":264.8,"f":"4:24.80"}],"p27":{"yr":2027,"t":264.06,"f":"4:24.06"},"p28":{"yr":2028,"t":263.32,"f":"4:23.32"},"A":251.52,"Af":"4:11.52","B":254.04,"Bf":"4:14.04","gapSec":11.8,"gapPct":4.69}];
+const RELAY_PRED=[{"g":"Men","e":"4 x 100m Medley","pts":[{"yr":2022,"t":227.22,"f":"3:47.22"},{"yr":2025,"t":225.09,"f":"3:45.09"},{"yr":2026,"t":224.74,"f":"3:44.74"}],"p27":224.42,"p27f":"3:44.42","bar":213.0,"barf":"3:33.00","gapSec":11.42,"gapPct":5.36,"light":"red","latest":224.74,"latestf":"3:44.74","latestYr":2026},{"g":"Men","e":"4 x 100m Freestyle","pts":[{"yr":2022,"t":209.88,"f":"3:29.88"},{"yr":2025,"t":206.26,"f":"3:26.26"},{"yr":2026,"t":204.15,"f":"3:24.15"}],"p27":203.46,"p27f":"3:23.46","bar":193.0,"barf":"3:13.00","gapSec":10.46,"gapPct":5.42,"light":"red","latest":204.15,"latestf":"3:24.15","latestYr":2026},{"g":"Women","e":"4 x 100m Freestyle","pts":[{"yr":2022,"t":243.73,"f":"4:03.73"},{"yr":2026,"t":233.45,"f":"3:53.45"}],"p27":232.16,"p27f":"3:52.16","bar":218.0,"barf":"3:38.00","gapSec":14.16,"gapPct":6.5,"light":"red","latest":233.45,"latestf":"3:53.45","latestYr":2026},{"g":"Men","e":"4 x 200m Freestyle","pts":[{"yr":2022,"t":474.39,"f":"7:54.39"},{"yr":2023,"t":458.39,"f":"7:38.39"},{"yr":2024,"t":462.9,"f":"7:42.90"},{"yr":2025,"t":460.9,"f":"7:40.90"},{"yr":2026,"t":458.71,"f":"7:38.71"}],"p27":457.27,"p27f":"7:37.27","bar":428.0,"barf":"7:08.00","gapSec":29.27,"gapPct":6.84,"light":"red","latest":458.71,"latestf":"7:38.71","latestYr":2026},{"g":"Women","e":"4 x 100m Medley","pts":[{"yr":2022,"t":273.48,"f":"4:33.48"},{"yr":2023,"t":263.65,"f":"4:23.65"},{"yr":2024,"t":267.9,"f":"4:27.90"},{"yr":2026,"t":258.72,"f":"4:18.72"}],"p27":257.16,"p27f":"4:17.16","bar":239.0,"barf":"3:59.00","gapSec":18.16,"gapPct":7.6,"light":"red","latest":258.72,"latestf":"4:18.72","latestYr":2026},{"g":"Women","e":"4 x 200m Freestyle","pts":[{"yr":2022,"t":539.7,"f":"8:59.70"},{"yr":2026,"t":522.48,"f":"8:42.48"}],"p27":520.33,"p27f":"8:40.33","bar":476.0,"barf":"7:56.00","gapSec":44.33,"gapPct":9.31,"light":"red","latest":522.48,"latestf":"8:42.48","latestYr":2026}];
+
+const DOWNLOADS=[
+  ["Executive deck","Leadership-ready presentation","downloads/executive_deck.pptx"],
+  ["Executive deck source","Markdown version for editing","downloads/executive_deck.md"],
+  ["Technical coaches deck","Detailed presentation for coaches and analysts","downloads/technical_coaches_deck.pptx"],
+  ["Technical deck source","Markdown version for editing","downloads/technical_coaches_deck.md"],
+  ["Technical workbook","Complete Excel workbook with analysis tabs","downloads/technical_analytics_workbook.xlsx"],
+  ["Data dictionary","Excel dictionary for files, tabs, columns, formulas","downloads/data_dictionary.xlsx"],
+  ["Data dictionary source","Readable markdown dictionary","downloads/data_dictionary.md"],
+  ["Evidence appendix","Source, benchmark, and scope support","downloads/evidence_appendix.md"],
+  ["Federation summary","Federation-facing narrative summary","downloads/federation_summary.md"],
+  ["SFI action memo","Practical event and team recommendations","downloads/sfi_action_recommendations.md"],
+  ["Strategic questions","Decision agenda for review","downloads/strategic_questions.md"],
+  ["Data quality report","Parsing coverage and QA notes","downloads/data_quality_report.md"],
+  ["Business summary","Concise report summary","downloads/summary.md"],
+  ["README","Repository and package overview","downloads/README.md"]
+];
+
+function fmt(v,d=0){return Number(v).toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d})}
+function pctFmt(v){return Number(v).toFixed(1)+'%'}
+function absFmt(v){return Math.abs(Number(v)).toFixed(2)+'s'}
+function tierPill(t){
+  const cls={"International-readiness priority":"tier-intl","High development priority":"tier-high","Pipeline-build priority":"tier-pipe","Monitor":"tier-mon"};
+  const lbl={"International-readiness priority":"Intl ready","High development priority":"High dev","Pipeline-build priority":"Pipeline","Monitor":"Monitor"};
+  return '<span class="tier-pill '+(cls[t]||'tier-mon')+'">'+(lbl[t]||t)+'</span>';
+}
+function gapCls(v){if(v<=0)return'gap-excellent';if(v<=1)return'gap-excellent';if(v<=3)return'gap-good';if(v<=6)return'gap-ok';return'gap-far'}
+function gapDisp(v){if(v<=0)return'<span class="gap-excellent">&#10022; '+pctFmt(Math.abs(v))+' ahead</span>';return'<span class="'+gapCls(v)+'">'+pctFmt(v)+'</span>'}
+
+function barChart(id,rows,{lbl,val,fmt:fmtFn,cls=''}){
+  const mx=Math.max(...rows.map(r=>val(r)),1);
+  document.getElementById(id).innerHTML=rows.map(r=>{
+    const v=val(r),w=Math.max((Math.abs(v)/mx)*100,1);
+    return'<div class="bar-row"><div class="bar-label" title="'+lbl(r)+'">'+lbl(r)+'</div><div class="bar-track"><div class="bar-fill '+cls+'" style="width:'+w+'%"></div></div><div class="bar-val">'+(fmtFn?fmtFn(v,r):fmt(v))+'</div></div>';
+  }).join('');
+}
+
+function renderPriorities(){
+  const g=document.getElementById('genderFilter').value;
+  const c=document.getElementById('categoryFilter').value;
+  const t=document.getElementById('tierFilter').value;
+  let d=PRIORITIES.slice();
+  if(g!=='all')d=d.filter(r=>r.gender===g);
+  if(c!=='all')d=d.filter(r=>r.category===c);
+  if(t!=='all')d=d.filter(r=>r.tier===t);
+  d.sort((a,b)=>b.score-a.score);
+  const top=d.slice(0,10);
+  document.getElementById('priorityCount').textContent=top.length+' events';
+  barChart('priorityChart',top,{lbl:r=>r.gender+' '+r.event,val:r=>r.score,fmt:v=>fmt(v,1)});
+  document.getElementById('priorityTable').innerHTML=top.map(r=>'<tr><td><b>'+r.gender+'</b> '+r.event+'</td><td class="num">'+fmt(r.score,1)+'</td><td>'+tierPill(r.tier)+'</td><td style="font-size:12px;color:var(--pewter);max-width:200px">'+r.action+'</td></tr>').join('');
+  renderScatter(d.slice(0,20));
+}
+
+function renderScatter(data){
+  const svg=document.getElementById('scatterSvg');
+  const tip=document.getElementById('scatterTip');
+  const W=800,H=340,p={t:20,r:30,b:50,l:50};
+  const cW=W-p.l-p.r,cH=H-p.t-p.b;
+  const pts=data.filter(r=>r.worldGap!==undefined&&r.momentum!==undefined);
+  if(!pts.length){svg.innerHTML='';return}
+  const xMin=-1,xMax=10,yMax=Math.max(...pts.map(r=>r.momentum))*1.15;
+  const xS=v=>p.l+((v-xMin)/(xMax-xMin))*cW;
+  const yS=v=>p.t+cH-(v/yMax)*cH;
+  const rS=v=>5+(v||0)*18;
+  const cols={"International-readiness priority":"#fc5200","High development priority":"#0055cc","Pipeline-build priority":"#1a7a4a","Monitor":"#9b9b95"};
+  let h='';
+  [0,2,4,6,8,10].forEach(x=>{h+='<line class="grid-line" x1="'+xS(x)+'" y1="'+p.t+'" x2="'+xS(x)+'" y2="'+(p.t+cH)+'"/><text class="axis-label" x="'+xS(x)+'" y="'+(p.t+cH+18)+'" text-anchor="middle">'+x+'%</text>';});
+  [0,10,20,30,40,50].filter(v=>v<=yMax).forEach(y=>{h+='<line class="grid-line" x1="'+p.l+'" y1="'+yS(y)+'" x2="'+(p.l+cW)+'" y2="'+yS(y)+'"/><text class="axis-label" x="'+(p.l-8)+'" y="'+(yS(y)+4)+'" text-anchor="end">'+y+'s</text>';});
+  h+='<line class="axis-line" x1="'+p.l+'" y1="'+p.t+'" x2="'+p.l+'" y2="'+(p.t+cH)+'"/>';
+  h+='<line class="axis-line" x1="'+p.l+'" y1="'+(p.t+cH)+'" x2="'+(p.l+cW)+'" y2="'+(p.t+cH)+'"/>';
+  if(xS(0)>=p.l){h+='<line stroke="#fc5200" stroke-width="1.5" stroke-dasharray="4,3" x1="'+xS(0)+'" y1="'+p.t+'" x2="'+xS(0)+'" y2="'+(p.t+cH)+'" opacity=".5"/><text class="axis-label" fill="#fc5200" x="'+(xS(0)+4)+'" y="'+(p.t+12)+'" font-size="10">At world level</text>';}
+  h+='<text class="axis-label" x="'+(p.l+cW/2)+'" y="'+(H-4)+'" text-anchor="middle">Gap to World 2025 8th place (%)</text>';
+  h+='<text class="axis-label" x="12" y="'+(p.t+cH/2)+'" text-anchor="middle" transform="rotate(-90,12,'+(p.t+cH/2)+')">Winner improvement 2022-2026 (s)</text>';
+  pts.forEach((r,i)=>{
+    const cx=xS(r.worldGap),cy=yS(r.momentum),rad=rS(r.conversion),col=cols[r.tier]||'#9b9b95';
+    h+='<circle class="bubble" cx="'+cx+'" cy="'+cy+'" r="'+rad+'" fill="'+col+'" fill-opacity=".7" stroke="'+col+'" stroke-width="1.5" data-idx="'+i+'"/>';
+    if(r.score>=57){h+='<text class="axis-label" x="'+cx+'" y="'+(cy-rad-4)+'" text-anchor="middle" font-size="10" font-weight="600" fill="'+col+'">'+r.gender[0]+' '+r.event.split(' ').slice(-1)[0]+'</text>';}
+  });
+  svg.innerHTML=h;
+  svg.querySelectorAll('.bubble').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{
+      const r=pts[+el.dataset.idx];
+      const box=svg.closest('.scatter-wrap').getBoundingClientRect(),bub=el.getBoundingClientRect();
+      tip.innerHTML='<b>'+r.gender+' '+r.event+'</b><br>Score: '+fmt(r.score,1)+' &middot; Gap: '+pctFmt(r.worldGap)+'<br>Momentum: '+fmt(r.momentum,1)+'s &middot; Conv: '+(r.conversion?(r.conversion*100).toFixed(0)+'%':'&mdash;')+'<br>'+tierPill(r.tier);
+      tip.style.left=(bub.left-box.left+20)+'px';
+      tip.style.top=(bub.top-box.top-10)+'px';
+      tip.classList.add('show');
+    });
+    el.addEventListener('mouseleave',()=>tip.classList.remove('show'));
+  });
+}
+
+function renderTeams(){
+  barChart('teamChart',TEAMS.slice(0,10),{lbl:r=>r.team,val:r=>r.points,fmt:v=>fmt(v)});
+  barChart('conversionChart',TEAMS.slice(0,10),{lbl:r=>r.team,val:r=>r.convRate,fmt:v=>(v*100).toFixed(1)+'%',cls:'blue'});
+  document.getElementById('teamTable').innerHTML=TEAMS.map((r,i)=>'<tr><td>'+(i===0?'<span style="color:var(--orange)">&#9733; </span>':'')+'<b>'+r.team+'</b></td><td class="num">'+fmt(r.points)+'</td><td class="num">'+r.medals+'</td><td class="num">'+r.top8+'</td><td class="num">'+(r.medalConv*100).toFixed(1)+'%</td><td class="num"><div class="conv-meter"><div class="conv-track"><div class="conv-fill" style="width:'+(r.convRate*100)+'%"></div></div><span>'+(r.convRate*100).toFixed(1)+'%</span></div></td><td class="num">'+r.finalists+'/'+r.heatEntries+'</td><td><span class="tier-pill tier-mon">Broad system</span></td></tr>').join('');
+}
+
+function renderBenchmarks(){
+  document.getElementById('bench8Table').innerHTML=B8.map(r=>'<tr><td><b>'+r.gender+'</b> '+r.event+'</td><td class="num mono">'+r.indiaTime+'</td><td class="num mono">'+r.worldTime+'</td><td class="num">'+gapDisp(r.gapPct)+'</td><td>'+tierPill(r.gapPct<=1?"International-readiness priority":r.gapPct<=3?"High development priority":r.gapPct<=6?"Pipeline-build priority":"Monitor")+'</td></tr>').join('');
+  document.getElementById('benchGoldTable').innerHTML=BGOLD.map(r=>'<tr><td><b>'+r.gender+'</b> '+r.event+'</td><td class="num mono">'+r.indiaTime+'</td><td class="num mono">'+r.worldTime+'</td><td class="num"><span class="'+gapCls(r.gapPct)+'">'+pctFmt(r.gapPct)+'</span></td><td style="font-size:12px;color:var(--pewter)">'+r.performer+'</td></tr>').join('');
+  barChart('momentumChart',MOMENTUM,{lbl:r=>r.gender+' '+r.event,val:r=>r.improvement,fmt:v=>v.toFixed(2)+'s',cls:'green'});
+}
+
+function renderAthletes(){
+  document.getElementById('athleteTable').innerHTML=ATHLETES.sort((a,b)=>b.score-a.score).slice(0,10).map(r=>'<tr><td><b>'+r.name+'</b></td><td>'+r.team+'</td><td class="num">'+fmt(r.score,1)+'</td><td class="num">'+r.impYears+'</td><td style="font-size:11px;color:var(--pewter)">'+r.profile+'</td></tr>').join('');
+  document.getElementById('pipelineTable').innerHTML=PIPELINE.map(r=>'<tr><td><b>'+r.gender+'</b> '+r.stroke+' <span style="color:var(--pewter)">'+r.category+'</span></td><td class="num">'+r.teams+'</td><td class="num">'+fmt(r.points)+'</td><td class="num">'+r.medals+'</td><td class="num">'+r.avgRank.toFixed(2)+'</td></tr>').join('');
+}
+
+function renderRecords(){
+  const sorted=RECORDS.slice().sort((a,b)=>a.gap-b.gap);
+  document.getElementById('recordTable').innerHTML=sorted.map(r=>'<tr><td>'+r.year+'</td><td><b>'+r.gender+'</b> '+r.event+'</td><td>'+r.winner+' <span style="font-size:11px;color:var(--pewter)">('+r.team+')</span></td><td class="num mono">'+r.time+'</td><td class="num '+(r.gap<0?'gap-excellent':'gap-far')+'">'+(r.gap<0?'&minus;':'')+absFmt(r.gap)+'</td><td><span class="rec-flag">&#9873; NMR</span></td></tr>').join('');
+  const data=sorted.slice(0,10);
+  const svg=document.getElementById('waterfallSvg');
+  const W=680,H=280,p={t:20,r:20,b:65,l:50};
+  const cW=W-p.l-p.r,cH=H-p.t-p.b;
+  const vals=data.map(r=>r.gap);
+  const minV=Math.min(...vals)*1.1,maxV=Math.max(Math.max(...vals)*1.1,1);
+  const range=maxV-minV;
+  const yS=v=>p.t+cH-((v-minV)/range)*cH;
+  const zY=yS(0);
+  const bw=Math.floor(cW/data.length)-4;
+  let h='<line x1="'+p.l+'" y1="'+zY+'" x2="'+(W-p.r)+'" y2="'+zY+'" stroke="var(--bone)" stroke-width="1"/>';
+  data.forEach((r,i)=>{
+    const x=p.l+i*(bw+4)+2;
+    const y=r.gap<0?yS(r.gap):zY;
+    const ht=Math.abs(yS(r.gap)-zY);
+    const col=r.gap<0?'var(--green)':'var(--pewter)';
+    const evtS=r.gender[0]+' '+r.event.substring(0,9);
+    h+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+Math.max(ht,2)+'" fill="'+col+'" fill-opacity=".85" rx="1"/>';
+    h+='<text class="wf-val" x="'+(x+bw/2)+'" y="'+(r.gap<0?y-4:y+ht+12)+'" text-anchor="middle" fill="'+col+'">'+r.gap.toFixed(1)+'s</text>';
+    h+='<text class="wf-label" x="'+(x+bw/2)+'" y="'+(H-8)+'" text-anchor="middle" transform="rotate(-45,'+(x+bw/2)+','+(H-8)+')">'+r.year+'</text>';
+    h+='<text class="wf-label" x="'+(x+bw/2)+'" y="'+(H-22)+'" text-anchor="middle" font-size="9">'+evtS+'</text>';
+  });
+  [-15,-10,-5,0,5].forEach(v=>{if(v>=minV&&v<=maxV){h+='<text class="axis-label" x="'+(p.l-6)+'" y="'+(yS(v)+4)+'" text-anchor="end">'+v+'s</text>';}});
+  svg.innerHTML=h;
+}
+
+function renderDownloads(){
+  document.getElementById('downloadGrid').innerHTML=DOWNLOADS.map(([t,d,h])=>'<div class="dl-card"><h4>'+t+'</h4><p>'+d+'</p><a class="dl-link" href="'+h+'">&#8595; Download</a></div>').join('');
+}
+
+function switchTab(group,id){
+  document.querySelectorAll('[id^="'+group+'-"]').forEach(el=>el.classList.remove('active'));
+  document.getElementById(group+'-'+id).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.toLowerCase().includes(id==='8th'?'8th':'gold'));});
+}
+
+['genderFilter','categoryFilter','tierFilter'].forEach(id=>{document.getElementById(id).addEventListener('change',renderPriorities);});
+renderPriorities();
+renderTeams();
+renderBenchmarks();
+renderAthletes();
+renderRecords();
+
+/* ===== PREDICTIONS ===== */
+function tlBadge(l){
+  const m={green:['tl-green','Green'],yellow:['tl-yellow','Yellow'],red:['tl-red','Red']};
+  const x=m[l]||m.red;
+  return '<span class="tl '+x[0]+'"><span class="tl-dot"></span>'+x[1]+'</span>';
+}
+function gapTxt(v){
+  if(v<=0) return '<span class="gap-excellent">&#10022; '+Math.abs(v).toFixed(1)+'% under</span>';
+  if(v<=1.5) return '<span class="gap-good">+'+v.toFixed(1)+'%</span>';
+  if(v<=3) return '<span class="gap-ok">+'+v.toFixed(1)+'%</span>';
+  return '<span class="gap-far">+'+v.toFixed(1)+'%</span>';
+}
+function renderPredEvents(){
+  const sorted=PRED.slice().sort((a,b)=>a.gapA-b.gapA);
+  // gap chart (closest 12, lower gap = better; show as proximity)
+  const top=sorted.slice(0,12);
+  const mx=Math.max(...top.map(p=>Math.abs(p.gapA)),1);
+  document.getElementById('predGapChart').innerHTML=top.map(p=>{
+    const col=p.lA==='green'?'green':p.lA==='yellow'?'':'';
+    const fillCls=p.lA==='green'?'green':p.lA==='yellow'?'':'';
+    const w=Math.max((1-Math.min(Math.abs(p.gapA),8)/8)*100,3);
+    const barcol=p.lA==='green'?'var(--green)':p.lA==='yellow'?'#e6a817':'var(--pewter)';
+    return '<div class="bar-row"><div class="bar-label" title="'+p.g+' '+p.e+'">'+p.g[0]+' '+p.e+(p.nw?' &#9733;':'')+'</div>'+
+      '<div class="bar-track"><div class="bar-fill" style="width:'+w+'%;background:'+barcol+'"></div></div>'+
+      '<div class="bar-val">'+(p.gapA<=0?'':'+')+p.gapA.toFixed(1)+'%</div></div>';
+  }).join('');
+
+  document.getElementById('predRowCount').textContent=PRED.length+' events';
+  document.getElementById('predTable').innerHTML=sorted.map(p=>
+    '<tr>'+
+    '<td><b>'+p.g+'</b> '+p.e+(p.nw?' <span class="rec-flag">&#9733; NEW</span>':'')+'</td>'+
+    '<td class="num mono">'+p.cur+'</td>'+
+    '<td class="num mono">'+p.lin+'</td>'+
+    '<td class="num mono" style="font-size:11px;color:var(--pewter)">'+p.ciL+'&ndash;'+p.ciH+'</td>'+
+    '<td class="num mono">'+p.A+'</td>'+
+    '<td class="num">'+gapTxt(p.gapA)+'</td>'+
+    '<td>'+tlBadge(p.lA)+'</td>'+
+    '<td class="num mono">'+(p.B||'&mdash;')+'</td>'+
+    '<td>'+(p.nw?'<span style="font-size:11px;color:var(--pewter)">World Cup route</span>':tlBadge(p.lB))+'</td>'+
+    '</tr>'
+  ).join('');
+}
+function renderPredAthletes(){
+  document.getElementById('athleteCards').innerHTML=PRED_ATH.map(a=>{
+    const prime = a.age28>=20 && a.age28<=26;
+    const young = a.age28<20;
+    const ageTag = a.age28===0?'<span class="tl tl-yellow"><span class="tl-dot"></span>Age n/a</span>':
+      prime?'<span class="tl tl-green"><span class="tl-dot"></span>Prime at LA28 (age '+a.age28+')</span>':
+      young?'<span class="tl tl-yellow"><span class="tl-dot"></span>Rising (age '+a.age28+')</span>':
+      '<span class="tl tl-red"><span class="tl-dot"></span>Past peak risk (age '+a.age28+')</span>';
+    const cls = a.name.indexOf('Nehra')>=0?'athlete-card nehra-card':'athlete-card';
+    return '<div class="'+cls+'">'+
+      '<div class="ac-head"><div class="ac-name">'+a.name+'</div><div class="ac-meta">'+a.team+' &middot; '+a.fy+'&ndash;'+a.ly+' &middot; '+a.prof+'</div></div>'+
+      '<div class="ac-body">'+
+        '<div class="ac-row"><span class="ac-label">Progression score</span><span class="ac-value">'+a.prog.toFixed(1)+'</span></div>'+
+        '<div class="ac-row"><span class="ac-label">Improving event-years</span><span class="ac-value">'+a.imp+'</span></div>'+
+        '<div class="ac-row"><span class="ac-label">Medals / Top-8</span><span class="ac-value">'+a.medals+' / '+a.top8+'</span></div>'+
+        '<div style="margin-top:10px">'+ageTag+'</div>'+
+      '</div></div>';
+  }).join('');
+}
+function renderPredGap(){
+  const fund=PRED.filter(p=>p.gapA<=3).sort((a,b)=>a.gapA-b.gapA);
+  const stop=PRED.filter(p=>p.gapA>3).sort((a,b)=>a.gapA-b.gapA);
+  document.getElementById('gapFund').innerHTML=fund.map(p=>
+    '<div class="ac-row"><span class="ac-label"><b>'+p.g[0]+'</b> '+p.e+(p.nw?' <span style="color:var(--orange)">&#9733;</span>':'')+'</span>'+
+    '<span>'+tlBadge(p.lA)+' <span style="font-size:11px;color:var(--pewter);margin-left:6px">'+(p.gapA<=0?'':'+')+p.gapA.toFixed(1)+'%</span></span></div>'
+  ).join('');
+  document.getElementById('gapStop').innerHTML=stop.map(p=>
+    '<div class="ac-row"><span class="ac-label">'+p.g[0]+' '+p.e+'</span>'+
+    '<span style="font-size:11px;color:var(--pewter)">+'+p.gapA.toFixed(1)+'% off A</span></div>'
+  ).join('');
+}
+function predTab(id){
+  document.querySelectorAll('[id^="pred-"]').forEach(el=>el.classList.remove('active'));
+  document.getElementById('pred-'+id).classList.add('active');
+  document.querySelectorAll('.pred-tab').forEach(b=>{
+    const map={event:'Event pathway',athlete:'Athlete funding',gap:'Gap analysis'};
+    b.classList.toggle('active', b.textContent.indexOf(map[id].split(' ')[0])>=0);
+  });
+}
+
+/* ===== TRAJECTORY CHARTS ===== */
+function bodyLengths(gapSec, eventName){
+  // approx avg velocity: pool body-length ~ time per ~2.2m (avg swimmer body+reach)
+  // simpler honest proxy: 1 body length ~ 0.9s sprint pace, ~1.1s distance pace
+  var perBL = /50m|100m/.test(eventName) ? 0.9 : 1.1;
+  return gapSec/perBL;
+}
+function renderTrajectories(){
+  var grid=document.getElementById('trajGrid');
+  if(!grid) return;
+  grid.innerHTML=TRAJ.map(function(d){
+    var edge = d.gapPct<=0?'green-edge':(d.gapPct<=1.5?'yellow-edge':'red-edge');
+    var allT=d.pts.map(function(p){return p.t;}).concat([d.p27.t,d.p28.t,d.A]);
+    if(d.B) allT.push(d.B);
+    var mn=Math.min.apply(null,allT), mx=Math.max.apply(null,allT);
+    var pad=(mx-mn)*0.15||1; mn-=pad; mx+=pad;
+    var W=380,H=150,L=10,R=10,T=12,Bot=28;
+    var allYears=d.pts.map(function(p){return p.yr;}).concat([2027,2028]);
+    var yMin=Math.min.apply(null,allYears), yMax=2028;
+    function xs(yr){return L+((yr-yMin)/(yMax-yMin))*(W-L-R);}
+    function ys(t){return T+( (t-mn)/(mx-mn) )*(H-T-Bot);} // higher time = lower on chart? time: faster=lower number=better. We want faster at TOP.
+    // invert so faster(lower secs) is higher
+    function ysv(t){return T+(1-(mx-t)/(mx-mn))*(H-T-Bot);}
+    // We'll use: faster time -> higher up. lower t -> smaller y.
+    function Y(t){return T+((t-mn)/(mx-mn))*(H-T-Bot);}
+    var s='';
+    // A standard line (green)
+    s+='<line x1="'+L+'" y1="'+Y(d.A)+'" x2="'+(W-R)+'" y2="'+Y(d.A)+'" stroke="#1a7a4a" stroke-width="1.5"/>';
+    s+='<text x="'+(W-R)+'" y="'+(Y(d.A)-3)+'" text-anchor="end" font-size="9" fill="#1a7a4a" font-weight="700" font-family="sans-serif">A '+d.Af+'</text>';
+    // B standard line (dashed) if present
+    if(d.B){
+      s+='<line x1="'+L+'" y1="'+Y(d.B)+'" x2="'+(W-R)+'" y2="'+Y(d.B)+'" stroke="#1a7a4a" stroke-width="1" stroke-dasharray="4,3" opacity=".6"/>';
+      s+='<text x="'+(W-R)+'" y="'+(Y(d.B)+10)+'" text-anchor="end" font-size="9" fill="#1a7a4a" opacity=".8" font-family="sans-serif">B '+d.Bf+'</text>';
+    }
+    // actual points line
+    var actPts=d.pts.map(function(p){return xs(p.yr)+','+Y(p.t);}).join(' ');
+    s+='<polyline points="'+actPts+'" fill="none" stroke="#0d0d0d" stroke-width="2"/>';
+    // projection line (dashed orange) from last actual to p27 to p28
+    var last=d.pts[d.pts.length-1];
+    s+='<polyline points="'+xs(last.yr)+','+Y(last.t)+' '+xs(2027)+','+Y(d.p27.t)+' '+xs(2028)+','+Y(d.p28.t)+'" fill="none" stroke="#fc5200" stroke-width="2" stroke-dasharray="5,3"/>';
+    // dots
+    d.pts.forEach(function(p){ s+='<circle cx="'+xs(p.yr)+'" cy="'+Y(p.t)+'" r="3.5" fill="#0d0d0d"/>'; });
+    s+='<circle cx="'+xs(2027)+'" cy="'+Y(d.p27.t)+'" r="3.5" fill="#fc5200" opacity=".6"/>';
+    s+='<circle cx="'+xs(2028)+'" cy="'+Y(d.p28.t)+'" r="4.5" fill="#fc5200"/>';
+    // year axis labels
+    [yMin,2026,2028].forEach(function(yr){
+      s+='<text x="'+xs(yr)+'" y="'+(H-10)+'" text-anchor="middle" font-size="9" fill="#5c5b57" font-family="sans-serif">'+yr+'</text>';
+    });
+    var bl=Math.abs(bodyLengths(d.gapSec,d.e));
+    var gapColor=d.gapSec<=0?'green':'';
+    var verdict = d.gapPct<=0?'Projects to CLEAR the standard':(d.gapPct<=1.5?'Within reach with intervention':'Outside reach on current trend');
+    var blTxt = d.gapSec<=0? ('&#10022; '+Math.abs(d.gapSec).toFixed(1)+'s under the line') : (d.gapSec.toFixed(1)+'s short &middot; ~'+bl.toFixed(1)+' body lengths');
+    return '<div class="traj-card '+edge+'">'+
+      '<div class="traj-head"><div><div class="traj-title">'+d.g+' '+d.e+(d.isNew?' <span class="rec-flag">&#9733; NEW</span>':'')+'</div>'+
+      '<div class="traj-sub">'+verdict+'</div></div></div>'+
+      '<svg class="traj-svg" viewBox="0 0 '+W+' '+H+'">'+s+'</svg>'+
+      '<div class="gap-translate"><span class="gap-big '+gapColor+'">'+(d.gapSec<=0?'-':'+')+Math.abs(d.gapSec).toFixed(1)+'s</span> '+
+      '<span style="font-size:11px;color:var(--pewter)"> 2028 proj vs A standard</span><br>'+
+      '<span style="font-size:12px">'+blTxt+'</span></div>'+
+      '</div>';
+  }).join('');
+}
+
+/* ===== QUALIFICATION TIMELINE ===== */
+function renderQualTimeline(){
+  var svg=document.getElementById('qtSvg');
+  if(!svg) return;
+  var W=900,H=130,L=30,R=40,Y=60;
+  var milestones=[
+    {date:'Jun 2026',label:'Today',x:0,type:'today'},
+    {date:'1 Mar 2027',label:'Window opens',x:0.18,type:'open'},
+    {date:'Jul 2027',label:'Budapest 2027',sub:'relays + standards',x:0.42,type:'gate'},
+    {date:'Oct 2027',label:'World Cup 2027',sub:'new 50m events',x:0.58,type:'gate'},
+    {date:'18 Jun 2028',label:'Window closes',x:0.92,type:'close'},
+    {date:'22 Jul 2028',label:'LA28 Games',x:1.0,type:'games'}
+  ];
+  function X(f){return L+f*(W-L-R);}
+  var s='';
+  // base line
+  s+='<line class="qt-line" x1="'+X(0)+'" y1="'+Y+'" x2="'+X(1)+'" y2="'+Y+'"/>';
+  // filled portion = qualification window (open to close)
+  s+='<line class="qt-fill" x1="'+X(0.18)+'" y1="'+Y+'" x2="'+X(0.92)+'" y2="'+Y+'"/>';
+  milestones.forEach(function(m){
+    var x=X(m.x);
+    if(m.type==='today'){
+      s+='<line class="qt-today" x1="'+x+'" y1="'+(Y-22)+'" x2="'+x+'" y2="'+(Y+22)+'"/>';
+      s+='<text class="qt-today-lbl" x="'+x+'" y="'+(Y-28)+'" text-anchor="middle">'+m.label+'</text>';
+      s+='<text class="qt-date" x="'+x+'" y="'+(Y+34)+'" text-anchor="middle">'+m.date+'</text>';
+      return;
+    }
+    var cls=m.type==='gate'?'qt-node gate':'qt-node';
+    var r=m.type==='gate'?7:5;
+    s+='<circle class="'+cls+'" cx="'+x+'" cy="'+Y+'" r="'+r+'"/>';
+    var above = (m.type==='gate');
+    if(above){
+      s+='<text class="qt-label" x="'+x+'" y="'+(Y-16)+'" text-anchor="middle">'+m.label+'</text>';
+      if(m.sub) s+='<text class="qt-date" x="'+x+'" y="'+(Y-28)+'" text-anchor="middle">'+m.sub+'</text>';
+      s+='<text class="qt-date" x="'+x+'" y="'+(Y+22)+'" text-anchor="middle">'+m.date+'</text>';
+    }else{
+      s+='<text class="qt-label" x="'+x+'" y="'+(Y+22)+'" text-anchor="middle">'+m.label+'</text>';
+      s+='<text class="qt-date" x="'+x+'" y="'+(Y+34)+'" text-anchor="middle">'+m.date+'</text>';
+    }
+  });
+  svg.innerHTML=s;
+}
+
+/* ===== RELAY PATHWAY ===== */
+function renderRelays(){
+  var box=document.getElementById('relayList');
+  if(!box) return;
+  box.innerHTML=RELAY_PRED.map(function(r){
+    // bar: show projected time vs bar. fill width relative to gap (capped)
+    var pct=Math.min(Math.abs(r.gapPct),12)/12*100;
+    var lightCol=r.light==='green'?'var(--green)':r.light==='yellow'?'#e6a817':'var(--pewter)';
+    var first=r.pts[0], last=r.pts[r.pts.length-1];
+    return '<div class="relay-row">'+
+      '<div><div class="relay-name">'+r.g+' '+r.e+'</div>'+
+      '<div class="relay-prog">'+first.yr+': '+first.f+' &rarr; '+last.yr+': '+last.f+' &middot; 2027 proj '+r.p27f+'</div></div>'+
+      '<div class="relay-gapbar">'+
+        '<div class="relay-track"><div class="relay-fill" style="width:'+pct+'%;background:'+lightCol+'"></div></div>'+
+        '<span style="font-size:12px;font-weight:700;color:'+lightCol+';white-space:nowrap">+'+r.gapSec.toFixed(1)+'s</span>'+
+        '<span style="font-size:11px;color:var(--pewter);white-space:nowrap">('+r.gapPct.toFixed(1)+'% off)</span>'+
+      '</div></div>';
+  }).join('');
+}
+renderTrajectories();
+renderQualTimeline();
+renderRelays();
+
+/* ===== HERO STATE HEAT-GRID ===== */
+var MAP_STATES=[
+  {name:"Karnataka",points:1750,medals:175},
+  {name:"Maharashtra",points:963,medals:81},
+  {name:"Tamil Nadu",points:687,medals:55},
+  {name:"Delhi",points:346,medals:27},
+  {name:"Gujarat",points:330,medals:27},
+  {name:"Telangana",points:230,medals:21},
+  {name:"West Bengal",points:279,medals:15},
+  {name:"Odisha",points:238,medals:15},
+  {name:"Assam",points:226,medals:17},
+  {name:"Madhya Pradesh",points:107,medals:7}
+];
+var MAP_UNITS=[
+  {name:"RSPB",sub:"Railways",points:748,medals:58},
+  {name:"SSCB",sub:"Services",points:492,medals:38}
+];
+var mapMetric='points';
+function heatColor(frac){
+  // interpolate from faint orange to full orange on the dark hero
+  var base=[252,82,0];
+  var minA=0.16, maxA=1.0;
+  var a=minA+(maxA-minA)*frac;
+  return 'rgba('+base[0]+','+base[1]+','+base[2]+','+a.toFixed(3)+')';
+}
+function renderStateMap(){
+  var states=MAP_STATES.slice().sort(function(a,b){return b[mapMetric]-a[mapMetric];});
+  var mx=Math.max.apply(null,states.map(function(s){return s[mapMetric];}));
+  var grid=document.getElementById('stateGrid');
+  grid.innerHTML=states.map(function(s,i){
+    var frac=s[mapMetric]/mx;
+    var val=s[mapMetric].toLocaleString();
+    return '<div class="hm-tile" style="background:'+heatColor(frac)+'" title="'+s.name+': '+val+' '+mapMetric+'">'+
+      '<div class="hm-tile-rank">#'+(i+1)+'</div>'+
+      '<div class="hm-tile-name">'+s.name+'</div>'+
+      '<div class="hm-tile-val">'+val+'</div></div>';
+  }).join('');
+  var allMax=Math.max(mx, Math.max.apply(null,MAP_UNITS.map(function(u){return u[mapMetric];})));
+  document.getElementById('unitChips').innerHTML=MAP_UNITS.map(function(u){
+    var frac=u[mapMetric]/allMax;
+    return '<div class="hm-chip" style="background:'+heatColor(frac)+'">'+
+      '<div class="hm-chip-name">'+u.name+'</div>'+
+      '<div class="hm-chip-sub">'+u.sub+'</div>'+
+      '<div class="hm-chip-val">'+u[mapMetric].toLocaleString()+'</div></div>';
+  }).join('');
+  document.getElementById('mapLegendNote').innerHTML = mapMetric==='points' ? 'total points, 2022&ndash;2026' : 'total medals, 2022&ndash;2026';
+}
+function setMapMetric(m){
+  mapMetric=m;
+  document.querySelectorAll('.hm-tog-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-metric')===m);
+  });
+  renderStateMap();
+}
+renderStateMap();
+
+/* ===== SCROLL-SPY NAV ===== */
+(function(){
+  var navLinks=Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var sections=navLinks.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    return {link:a,el:document.getElementById(id)};
+  }).filter(function(s){return s.el;});
+  function onScroll(){
+    var pos=window.scrollY+120;
+    var current=sections[0];
+    for(var i=0;i<sections.length;i++){
+      if(sections[i].el.offsetTop<=pos) current=sections[i];
+    }
+    sections.forEach(function(s){s.link.classList.toggle('active',s===current);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+
+renderPredEvents();
+renderPredAthletes();
+renderPredGap();
+
+renderDownloads();
+</script>
+</body>
+</html>
